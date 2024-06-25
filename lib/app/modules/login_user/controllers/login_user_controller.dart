@@ -1,9 +1,16 @@
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 class LoginUserController extends GetxController {
-  //TODO: Implement LoginUserController
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  bool isObsecure = false;
 
-  final count = 0.obs;
+  void toggle() {
+    isObsecure = !isObsecure;
+    update();
+  }
+
   @override
   void onInit() {
     super.onInit();
@@ -18,6 +25,4 @@ class LoginUserController extends GetxController {
   void onClose() {
     super.onClose();
   }
-
-  void increment() => count.value++;
 }

@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:get/get.dart';
-
 import '../controllers/profile_controller.dart';
 
 class ProfileView extends GetView<ProfileController> {
@@ -214,7 +211,7 @@ class ProfileView extends GetView<ProfileController> {
                       ),
                     )
                   ],
-                )
+                ),
               ],
             ),
           ),
