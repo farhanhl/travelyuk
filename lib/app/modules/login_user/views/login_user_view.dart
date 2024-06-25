@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
+import 'package:travelyuk/app/core/api/api.dart';
+import 'package:travelyuk/app/modules/login_user/services/login_service.dart';
 import 'package:travelyuk/app/routes/app_pages.dart';
+import 'package:travelyuk/app/theme/app_theme.dart';
 
 import '../controllers/login_user_controller.dart';
 
@@ -11,7 +14,11 @@ class LoginUserView extends GetView<LoginUserController> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<LoginUserController>(
-      init: LoginUserController(),
+      init: LoginUserController(
+        LoginService(
+          Get.find<Api>(),
+        ),
+      ),
       builder: (controller) {
         return Scaffold(
           resizeToAvoidBottomInset: false,
@@ -36,7 +43,7 @@ class LoginUserView extends GetView<LoginUserController> {
                         style: TextStyle(
                           fontSize: 24.sp,
                           fontWeight: FontWeight.bold,
-                          color: const Color(0xFF006298),
+                          color: primaryColor,
                         ),
                       ),
                     ],
@@ -115,7 +122,7 @@ class LoginUserView extends GetView<LoginUserController> {
                                 controller.isObsecure
                                     ? Icons.visibility
                                     : Icons.visibility_off,
-                                color: const Color(0xFF006298),
+                                color: primaryColor,
                               ),
                               onPressed: () {
                                 controller.toggle();
@@ -159,10 +166,13 @@ class LoginUserView extends GetView<LoginUserController> {
                                 style: ButtonStyle(
                                   backgroundColor:
                                       WidgetStateProperty.all<Color?>(
-                                    const Color(0xFF006298),
+                                    primaryColor,
                                   ),
                                 ),
-                                onPressed: () => null,
+                                onPressed: () => controller.doLogin(
+                                  email: controller.emailController.text,
+                                  password: controller.passwordController.text,
+                                ),
                                 child: const Text(
                                   "Login",
                                   style: TextStyle(
@@ -189,7 +199,7 @@ class LoginUserView extends GetView<LoginUserController> {
                   ElevatedButton(
                     style: ButtonStyle(
                       backgroundColor: WidgetStateProperty.all<Color?>(
-                        const Color(0xFF006298),
+                        primaryColor,
                       ),
                     ),
                     onPressed: () => Get.toNamed(Routes.REGISTER),
@@ -213,7 +223,7 @@ class LoginUserView extends GetView<LoginUserController> {
                   ElevatedButton(
                     style: ButtonStyle(
                       backgroundColor: WidgetStateProperty.all<Color?>(
-                        const Color(0xFF006298),
+                        primaryColor,
                       ),
                     ),
                     onPressed: () => Get.toNamed(Routes.LOGIN_ADMIN),

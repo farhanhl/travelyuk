@@ -1,9 +1,10 @@
 import 'dart:io';
 import 'package:get/get.dart';
+import 'package:travelyuk/app/modules/auth/controller/auth_controller.dart';
 import 'app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:travelyuk/core/api/api.dart';
+import 'package:travelyuk/app/core/api/api.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -28,6 +29,10 @@ void main() async {
             () async {
               Get.put(
                 Api(),
+                permanent: true,
+              );
+              Get.put(
+                AuthController(),
                 permanent: true,
               );
             },

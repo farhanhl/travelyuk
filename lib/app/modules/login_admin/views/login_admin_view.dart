@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 import 'package:travelyuk/app/routes/app_pages.dart';
+import 'package:travelyuk/app/theme/app_theme.dart';
 
 import '../controllers/login_admin_controller.dart';
 
@@ -36,7 +37,7 @@ class LoginAdminView extends GetView<LoginAdminController> {
                         style: TextStyle(
                           fontSize: 24.sp,
                           fontWeight: FontWeight.bold,
-                          color: const Color(0xFF006298),
+                          color: primaryColor,
                         ),
                       ),
                     ],
@@ -115,7 +116,7 @@ class LoginAdminView extends GetView<LoginAdminController> {
                                 controller.isObsecure
                                     ? Icons.visibility
                                     : Icons.visibility_off,
-                                color: const Color(0xFF006298),
+                                color: primaryColor,
                               ),
                               onPressed: () {
                                 controller.toggle();
@@ -159,7 +160,7 @@ class LoginAdminView extends GetView<LoginAdminController> {
                                 style: ButtonStyle(
                                   backgroundColor:
                                       WidgetStateProperty.all<Color?>(
-                                    const Color(0xFF006298),
+                                    primaryColor,
                                   ),
                                 ),
                                 onPressed: () => null,
@@ -189,7 +190,7 @@ class LoginAdminView extends GetView<LoginAdminController> {
                   ElevatedButton(
                     style: ButtonStyle(
                       backgroundColor: WidgetStateProperty.all<Color?>(
-                        const Color(0xFF006298),
+                        primaryColor,
                       ),
                     ),
                     onPressed: () => Get.toNamed(Routes.REGISTER),
@@ -213,7 +214,7 @@ class LoginAdminView extends GetView<LoginAdminController> {
                   ElevatedButton(
                     style: ButtonStyle(
                       backgroundColor: WidgetStateProperty.all<Color?>(
-                        const Color(0xFF006298),
+                        primaryColor,
                       ),
                     ),
                     onPressed: () => Get.toNamed(Routes.LOGIN_ADMIN),

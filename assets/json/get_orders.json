@@ -1,0 +1,44 @@
+{
+    "orders": [
+        {
+            "id": 1,
+            "user_id": 1,
+            "schedule_id": 1,
+            "payment_status": "Paid",
+            "created_at": "2024-06-25T16:45:34.000000Z",
+            "updated_at": "2024-06-25T16:45:34.000000Z",
+            "user": {
+                "id": 1,
+                "email": "test@example.com",
+                "nama_lengkap": "Test User",
+                "jenis_kelamin": "Laki-laki",
+                "nomor_telfon": "08123456789",
+                "created_at": "2024-06-25T13:40:59.000000Z",
+                "updated_at": "2024-06-25T13:40:59.000000Z"
+            },
+            "schedule": {
+                "id": 1,
+                "origin_city_id": 1,
+                "destination_city_id": 2,
+                "date": "2024-07-01",
+                "departure_time": "17:41:00",
+                "bus_name": "Bus 762",
+                "price": "66970.00",
+                "created_at": "2024-06-25T12:50:56.000000Z",
+                "updated_at": "2024-06-25T12:50:56.000000Z",
+                "origin_city": {
+                    "id": 1,
+                    "name": "Jakarta",
+                    "created_at": "2024-06-25T12:50:56.000000Z",
+                    "updated_at": "2024-06-25T12:50:56.000000Z"
+                },
+                "destination_city": {
+                    "id": 2,
+                    "name": "Surabaya",
+                    "created_at": "2024-06-25T12:50:56.000000Z",
+                    "updated_at": "2024-06-25T12:50:56.000000Z"
+                }
+            }
+        }
+    ]
+}

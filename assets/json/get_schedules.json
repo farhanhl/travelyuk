@@ -1,0 +1,119 @@
+{
+    "schedules": [
+        {
+            "id": 1,
+            "origin_city_id": 1,
+            "destination_city_id": 2,
+            "date": "2024-07-01",
+            "departure_time": "17:41:00",
+            "bus_name": "Bus 762",
+            "price": "66970.00",
+            "created_at": "2024-06-25T12:50:56.000000Z",
+            "updated_at": "2024-06-25T12:50:56.000000Z",
+            "origin_city": {
+                "id": 1,
+                "name": "Jakarta",
+                "created_at": "2024-06-25T12:50:56.000000Z",
+                "updated_at": "2024-06-25T12:50:56.000000Z"
+            },
+            "destination_city": {
+                "id": 2,
+                "name": "Surabaya",
+                "created_at": "2024-06-25T12:50:56.000000Z",
+                "updated_at": "2024-06-25T12:50:56.000000Z"
+            }
+        },
+        {
+            "id": 2,
+            "origin_city_id": 1,
+            "destination_city_id": 3,
+            "date": "2024-07-02",
+            "departure_time": "10:07:00",
+            "bus_name": "Bus 505",
+            "price": "60438.00",
+            "created_at": "2024-06-25T12:50:56.000000Z",
+            "updated_at": "2024-06-25T12:50:56.000000Z",
+            "origin_city": {
+                "id": 1,
+                "name": "Jakarta",
+                "created_at": "2024-06-25T12:50:56.000000Z",
+                "updated_at": "2024-06-25T12:50:56.000000Z"
+            },
+            "destination_city": {
+                "id": 3,
+                "name": "Bandung",
+                "created_at": "2024-06-25T12:50:56.000000Z",
+                "updated_at": "2024-06-25T12:50:56.000000Z"
+            }
+        },
+        {
+            "id": 3,
+            "origin_city_id": 1,
+            "destination_city_id": 4,
+            "date": "2024-07-18",
+            "departure_time": "09:56:00",
+            "bus_name": "Bus 301",
+            "price": "55863.00",
+            "created_at": "2024-06-25T12:50:56.000000Z",
+            "updated_at": "2024-06-25T12:50:56.000000Z",
+            "origin_city": {
+                "id": 1,
+                "name": "Jakarta",
+                "created_at": "2024-06-25T12:50:56.000000Z",
+                "updated_at": "2024-06-25T12:50:56.000000Z"
+            },
+            "destination_city": {
+                "id": 4,
+                "name": "Medan",
+                "created_at": "2024-06-25T12:50:56.000000Z",
+                "updated_at": "2024-06-25T12:50:56.000000Z"
+            }
+        },
+        {
+            "id": 4,
+            "origin_city_id": 1,
+            "destination_city_id": 5,
+            "date": "2024-07-20",
+            "departure_time": "21:40:00",
+            "bus_name": "Bus 511",
+            "price": "169132.00",
+            "created_at": "2024-06-25T12:50:56.000000Z",
+            "updated_at": "2024-06-25T12:50:56.000000Z",
+            "origin_city": {
+                "id": 1,
+                "name": "Jakarta",
+                "created_at": "2024-06-25T12:50:56.000000Z",
+                "updated_at": "2024-06-25T12:50:56.000000Z"
+            },
+            "destination_city": {
+                "id": 5,
+                "name": "Bekasi",
+                "created_at": "2024-06-25T12:50:56.000000Z",
+                "updated_at": "2024-06-25T12:50:56.000000Z"
+            }
+        },
+        {
+            "id": 5,
+            "origin_city_id": 1,
+            "destination_city_id": 6,
+            "date": "2024-06-30",
+            "departure_time": "14:48:00",
+            "bus_name": "Bus 942",
+            "price": "134736.00",
+            "created_at": "2024-06-25T12:50:56.000000Z",
+            "updated_at": "2024-06-25T12:50:56.000000Z",
+            "origin_city": {
+                "id": 1,
+                "name": "Jakarta",
+                "created_at": "2024-06-25T12:50:56.000000Z",
+                "updated_at": "2024-06-25T12:50:56.000000Z"
+            },
+            "destination_city": {
+                "id": 6,
+                "name": "Tangerang",
+                "created_at": "2024-06-25T12:50:56.000000Z",
+                "updated_at": "2024-06-25T12:50:56.000000Z"
+            }
+        }
+    ]
+}

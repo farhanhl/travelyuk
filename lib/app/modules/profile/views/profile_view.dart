@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:travelyuk/app/theme/app_theme.dart';
 import '../controllers/profile_controller.dart';
 
 class ProfileView extends GetView<ProfileController> {
@@ -198,7 +199,7 @@ class ProfileView extends GetView<ProfileController> {
                       child: ElevatedButton(
                         style: ButtonStyle(
                           backgroundColor: WidgetStateProperty.all<Color?>(
-                            const Color(0xFF006298),
+                            primaryColor,
                           ),
                         ),
                         onPressed: () => null,

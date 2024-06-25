@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:travelyuk/app/modules/home/views/home_view.dart';
 import 'package:travelyuk/app/modules/orders/views/orders_view.dart';
 import 'package:travelyuk/app/modules/profile/views/profile_view.dart';
+import 'package:travelyuk/app/theme/app_theme.dart';
 import '../controllers/dashboard_controller.dart';
 
 class DashboardView extends GetView<DashboardController> {
@@ -23,7 +24,7 @@ class DashboardView extends GetView<DashboardController> {
                 fontWeight: FontWeight.w500,
               ),
             ),
-            backgroundColor: const Color(0xFF006298),
+            backgroundColor: primaryColor,
             toolbarHeight: 80,
             centerTitle: true,
           ),
@@ -45,7 +46,7 @@ class DashboardView extends GetView<DashboardController> {
             ),
           ),
           bottomNavigationBar: BottomNavigationBar(
-            selectedItemColor: const Color(0xFF006298),
+            selectedItemColor: primaryColor,
             unselectedItemColor: Colors.grey,
             onTap: controller.changeTabIndex,
             currentIndex: controller.tabIndex,

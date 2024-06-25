@@ -1,6 +1,9 @@
 import 'package:get/get.dart';
+import 'package:travelyuk/app/modules/dashboard/controllers/dashboard_controller.dart';
 
 class HomeController extends GetxController {
+  final dashboardC = Get.find<DashboardController>();
+
   Future<List<String>> getEmployee() async {
     return ["-"];
     // if (allModelemployee.isEmpty) {
@@ -23,13 +26,13 @@ class HomeController extends GetxController {
     super.onInit();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
+  // @override
+  // void onReady() {
+  //   super.onReady();
+  // }
 
-  @override
-  void onClose() {
-    super.onClose();
-  }
+  // @override
+  // void onClose() {
+  //   super.onClose();
+  // }
 }
