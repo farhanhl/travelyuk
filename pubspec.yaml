@@ -1,0 +1,32 @@
+name: travelyuk
+version: 0.1.0
+publish_to: none
+description: A new Flutter project.
+environment:
+  sdk: '>=3.4.3 <4.0.0'
+
+dependencies:
+  get: 4.6.6
+  get_storage: ^2.1.1
+  dio: ^5.4.3+1
+  intl: ^0.19.0
+  lottie: ^3.1.2
+  flutter_screenutil: ^5.7.0
+  flutter_easyloading: ^3.0.5
+  double_back_to_close_app: ^2.1.0
+  font_awesome_flutter: ^10.7.0
+  dropdown_search: ^5.0.6
+  date_field: ^5.2.1
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_lints: ^3.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  assets:
+    - assets/lotties/
+    - assets/images/
+  uses-material-design: true
