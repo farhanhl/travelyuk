@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:travelyuk/app/models/submit_login_model.dart';
 import 'package:travelyuk/app/models/submit_register_model.dart';
@@ -19,6 +22,11 @@ class Api {
   }
 
   Future<Response> login(SubmitLogin userData) {
+    log(jsonEncode(userData));
     return dio.post("/login", data: userData);
+  }
+
+  Future<Response> getCities() {
+    return dio.get("/get_cities");
   }
 }

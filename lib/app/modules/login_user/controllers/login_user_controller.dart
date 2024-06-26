@@ -1,11 +1,11 @@
-import 'package:flutter/widgets.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
+import 'package:flutter/widgets.dart';
+import 'package:travelyuk/app/routes/app_pages.dart';
+import 'package:travelyuk/app/widgets/notification.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:travelyuk/app/models/submit_login_model.dart';
 import 'package:travelyuk/app/modules/auth/controller/auth_controller.dart';
 import 'package:travelyuk/app/modules/login_user/services/login_service.dart';
-import 'package:travelyuk/app/routes/app_pages.dart';
-import 'package:travelyuk/app/widgets/notification.dart';
 
 class LoginUserController extends GetxController {
   LoginService service;
@@ -19,15 +19,16 @@ class LoginUserController extends GetxController {
   final auth = Get.find<AuthController>();
   SubmitLogin submitLogin = SubmitLogin();
   bool isObsecure = true;
-  bool isUser = true;
+  bool isAdmin = false;
 
   void toggle() {
     isObsecure = !isObsecure;
     update();
   }
 
-  void toggleRole() {
-    isUser = !isUser;
+  void toggleRole(bool isAdmin) {
+    this.isAdmin = isAdmin;
+    update();
   }
 
   void doLogin({
@@ -40,29 +41,37 @@ class LoginUserController extends GetxController {
         backButton: () => Get.back(),
       );
     } else {
-      // EasyLoading.show(
-      //   status: 'loading...',
-      //   dismissOnTap: false,
-      //   maskType: EasyLoadingMaskType.black,
-      // );
-      // submitLogin.email = email;
-      // submitLogin.password = password;
-      // await service.login(submitLogin).then(
-      //   (value) {
-      //     auth.login(value.user);
-      //     EasyLoading.dismiss();
-      Get.offNamed(Routes.DASHBOARD);
-      //     },
-      //   ).catchError(
-      //     (e) {
-      //       EasyLoading.dismiss();
-      //       CustomNotification.errorHandle(
-      //         message: "$e",
-      //         backButton: () => Get.back(),
-      //       );
-      //     },
-      //   );
-      //   update();
+      EasyLoading.show(
+        status: 'loading...',
+        dismissOnTap: false,
+        maskType: EasyLoadingMaskType.black,
+      );
+      FocusManager.instance.primaryFocus?.unfocus();
+      submitLogin = SubmitLogin(
+        email: email,
+        password: password,
+        isAdmin: isAdmin,
+      );
+      await service.login(submitLogin).then(
+        (value) {
+          auth.login(value.user!);
+          EasyLoading.dismiss();
+          if (value.user!.isAdmin == true) {
+            Get.offAllNamed(Routes.DASHBOARD_ADMIN);
+          } else {
+            Get.offNamed(Routes.DASHBOARD);
+          }
+        },
+      ).catchError(
+        (e) {
+          EasyLoading.dismiss();
+          CustomNotification.errorHandle(
+            message: "$e",
+            backButton: () => Get.back(),
+          );
+        },
+      );
+      update();
     }
   }
 

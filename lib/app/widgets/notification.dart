@@ -72,7 +72,7 @@ class CustomNotification {
                 ),
                 Text(
                   message,
-                  style: TextStyle(fontSize: 14.sp),
+                  style: TextStyle(fontSize: 12.sp),
                   maxLines: 2,
                   textAlign: TextAlign.center,
                 ),

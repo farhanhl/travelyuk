@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:toggle_switch/toggle_switch.dart';
 import 'package:travelyuk/app/core/api/api.dart';
 import 'package:travelyuk/app/modules/login_user/services/login_service.dart';
 import 'package:travelyuk/app/routes/app_pages.dart';
@@ -140,25 +139,83 @@ class LoginUserView extends GetView<LoginUserController> {
                         SizedBox(
                           height: 10.h,
                         ),
-                        ToggleSwitch(
-                          customWidths: [Get.width.w, Get.width.w],
-                          cornerRadius: 20.0,
-                          activeBgColors: const [
-                            [Colors.cyan],
-                            [Colors.redAccent]
+                        Row(
+                          children: [
+                            Expanded(
+                              child: GestureDetector(
+                                onTap: () => controller.toggleRole(false),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: controller.isAdmin
+                                        ? shadowColor
+                                        : userColor,
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(18.r),
+                                      bottomLeft: Radius.circular(18.r),
+                                    ),
+                                  ),
+                                  padding: EdgeInsets.all(8.sp),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      FaIcon(
+                                        FontAwesomeIcons.user,
+                                        color: lightColor,
+                                        size: 16.sp,
+                                      ),
+                                      SizedBox(
+                                        width: 3.w,
+                                      ),
+                                      Text(
+                                        "Pengguna",
+                                        style: TextStyle(
+                                          color: lightColor,
+                                          fontSize: 13.sp,
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              child: GestureDetector(
+                                onTap: () => controller.toggleRole(true),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: controller.isAdmin
+                                        ? adminColor
+                                        : shadowColor,
+                                    borderRadius: BorderRadius.only(
+                                      topRight: Radius.circular(18.r),
+                                      bottomRight: Radius.circular(18.r),
+                                    ),
+                                  ),
+                                  padding: EdgeInsets.all(8.sp),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      FaIcon(
+                                        FontAwesomeIcons.userTie,
+                                        color: lightColor,
+                                        size: 16.sp,
+                                      ),
+                                      SizedBox(
+                                        width: 3.w,
+                                      ),
+                                      Text(
+                                        "Admin",
+                                        style: TextStyle(
+                                          color: lightColor,
+                                          fontSize: 13.sp,
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
                           ],
-                          activeFgColor: Colors.white,
-                          inactiveBgColor: Colors.grey,
-                          inactiveFgColor: Colors.white,
-                          totalSwitches: 2,
-                          labels: const ['Pengguna', 'Admin'],
-                          icons: const [
-                            FontAwesomeIcons.user,
-                            FontAwesomeIcons.userTie
-                          ],
-                          onToggle: (index) {
-                            controller.toggleRole();
-                          },
                         ),
                         SizedBox(
                           height: 10.h,

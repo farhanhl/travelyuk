@@ -1,10 +1,12 @@
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
+import 'package:travelyuk/app/models/get_cities_model.dart';
 import 'package:travelyuk/app/modules/dashboard/controllers/dashboard_controller.dart';
 import 'package:travelyuk/app/modules/home/services/home_service.dart';
 import 'package:travelyuk/app/widgets/notification.dart';
 
 class HomeController extends GetxController {
+  List<Cities> cities = [];
   final dashboardC = Get.find<DashboardController>();
   HomeService service;
   HomeController(this.service);
@@ -12,26 +14,32 @@ class HomeController extends GetxController {
   String? destinationCity;
   DateTime? date;
 
-  Future<List<String>> getEmployee() async {
-    return ["-"];
-    // if (allModelemployee.isEmpty) {
-    //   try {
-    //     SoeDetail internalValue = await service.getEmployee();
-    //     SoeDetail externalValue = await service.getExternalEmployee();
-    //     allModelemployee.addAll(internalValue.body!.data!);
-    //     allModelemployee.addAll(externalValue.body!.data!);
-    //     return allModelemployee;
-    //   } catch (e) {
-    //     return allModelemployee;
-    //   }
-    // } else {
-    //   return allModelemployee;
-    // }
+  @override
+  void onInit() async {
+    super.onInit();
+    await getCities();
   }
 
-  @override
-  void onInit() {
-    super.onInit();
+  Future<List<Cities>> getCities() async {
+    if (cities.isEmpty) {
+      try {
+        GetCities value = await service.getCities();
+        cities.addAll(value.cities ?? []);
+        return cities;
+      } catch (e) {
+        return cities;
+      }
+    } else {
+      return cities;
+    }
+  }
+
+  void changeCity({required bool isOrigin, required String city}) {
+    if (isOrigin == true) {
+      originCity = city;
+    } else {
+      destinationCity = city;
+    }
   }
 
   bool isAllFilled() {

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:travelyuk/app/core/api/api.dart';
+import 'package:travelyuk/app/models/get_cities_model.dart';
 import 'package:travelyuk/app/modules/home/services/home_service.dart';
 import 'package:travelyuk/app/theme/app_theme.dart';
 import 'package:travelyuk/app/utils/app_const.dart';
@@ -85,8 +86,8 @@ class HomeView extends GetView<HomeController> {
                       SizedBox(
                         height: 5.h,
                       ),
-                      DropdownSearch<String>(
-                        asyncItems: (value) => controller.getEmployee(),
+                      DropdownSearch<Cities>(
+                        asyncItems: (value) => controller.getCities(),
                         popupProps: PopupProps.dialog(
                           showSearchBox: true,
                           itemBuilder: (context, item, isSelected) =>
@@ -96,11 +97,14 @@ class HomeView extends GetView<HomeController> {
                             ),
                           ),
                         ),
-                        // dropdownBuilder: (context, selectedItem) => Text(
-                        //     selectedItem?.personalNumber ??
-                        //         controller.selectedReceiverBy!),
+                        dropdownBuilder: (context, selectedItem) => Text(
+                          selectedItem?.name ?? controller.originCity ?? "",
+                        ),
                         onChanged: (value) {
-                          // controller.changeNopeg(value);
+                          controller.changeCity(
+                            isOrigin: true,
+                            city: value?.name ?? "",
+                          );
                         },
                       ),
                       SizedBox(
@@ -113,8 +117,8 @@ class HomeView extends GetView<HomeController> {
                       SizedBox(
                         height: 5.h,
                       ),
-                      DropdownSearch<String>(
-                        asyncItems: (value) => controller.getEmployee(),
+                      DropdownSearch<Cities>(
+                        asyncItems: (value) => controller.getCities(),
                         popupProps: PopupProps.dialog(
                           showSearchBox: true,
                           itemBuilder: (context, item, isSelected) =>
@@ -124,11 +128,16 @@ class HomeView extends GetView<HomeController> {
                             ),
                           ),
                         ),
-                        // dropdownBuilder: (context, selectedItem) => Text(
-                        //     selectedItem?.personalNumber ??
-                        //         controller.selectedReceiverBy!),
+                        dropdownBuilder: (context, selectedItem) => Text(
+                          selectedItem?.name ??
+                              controller.destinationCity ??
+                              "",
+                        ),
                         onChanged: (value) {
-                          // controller.changeNopeg(value);
+                          controller.changeCity(
+                            isOrigin: false,
+                            city: value?.name ?? "",
+                          );
                         },
                       ),
                       SizedBox(
