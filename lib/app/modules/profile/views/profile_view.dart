@@ -202,7 +202,7 @@ class ProfileView extends GetView<ProfileController> {
                             primaryColor,
                           ),
                         ),
-                        onPressed: () => null,
+                        onPressed: () => controller.doLogOut(),
                         child: const Text(
                           "Keluar",
                           style: TextStyle(

@@ -1,9 +1,8 @@
-import 'dart:convert';
-import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:travelyuk/app/models/get_login_model.dart';
 import 'package:travelyuk/app/modules/auth/controller/auth_controller.dart';
+import 'package:travelyuk/app/routes/app_pages.dart';
 
 class ProfileController extends GetxController {
   final auth = Get.find<AuthController>();
@@ -17,7 +16,6 @@ class ProfileController extends GetxController {
   void onInit() async {
     super.onInit();
     userInformation = await auth.provideLoginInformation();
-    log(jsonEncode(userInformation));
     setProfileData();
   }
 
@@ -27,6 +25,11 @@ class ProfileController extends GetxController {
     genderController.text = userInformation.jenisKelamin ?? "";
     phoneNumberController.text = userInformation.nomorTelfon ?? "";
     update();
+  }
+
+  void doLogOut() async {
+    await auth.logout();
+    Get.offAllNamed(Routes.LOGIN_USER);
   }
 
   // @override

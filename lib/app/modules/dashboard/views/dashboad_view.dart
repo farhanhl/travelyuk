@@ -6,6 +6,7 @@ import 'package:travelyuk/app/modules/home/views/home_view.dart';
 import 'package:travelyuk/app/modules/orders/views/orders_view.dart';
 import 'package:travelyuk/app/modules/profile/views/profile_view.dart';
 import 'package:travelyuk/app/theme/app_theme.dart';
+import 'package:travelyuk/app/widgets/custom_widgets.dart';
 import '../controllers/dashboard_controller.dart';
 
 class DashboardView extends GetView<DashboardController> {
@@ -16,22 +17,11 @@ class DashboardView extends GetView<DashboardController> {
       init: DashboardController(),
       builder: (controller) {
         return Scaffold(
-          appBar: AppBar(
-            title: const Text(
-              'Travel Yuk',
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-            backgroundColor: primaryColor,
-            toolbarHeight: 80,
-            centerTitle: true,
-          ),
+          appBar: CustomWidget.appBar(),
           body: DoubleBackToCloseApp(
             snackBar: const SnackBar(
               content: Text(
-                "Press again to exit.",
+                "Tekan lagi untuk keluar.",
               ),
             ),
             child: SafeArea(

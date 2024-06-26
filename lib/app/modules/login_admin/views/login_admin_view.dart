@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:get/get.dart';
 import 'package:travelyuk/app/routes/app_pages.dart';
 import 'package:travelyuk/app/theme/app_theme.dart';
-
+import 'package:travelyuk/app/utils/app_const.dart';
 import '../controllers/login_admin_controller.dart';
 
 class LoginAdminView extends GetView<LoginAdminController> {
@@ -22,25 +21,14 @@ class LoginAdminView extends GetView<LoginAdminController> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Login ke ",
-                        style: TextStyle(
-                          fontSize: 24.sp,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        "Travel Yuk",
-                        style: TextStyle(
-                          fontSize: 24.sp,
-                          fontWeight: FontWeight.bold,
-                          color: primaryColor,
-                        ),
-                      ),
-                    ],
+                  Text(
+                    APP_NAME,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 24.sp,
+                      fontWeight: FontWeight.bold,
+                      color: primaryColor,
+                    ),
                   ),
                   SizedBox(
                     height: 10.h,
@@ -52,20 +40,29 @@ class LoginAdminView extends GetView<LoginAdminController> {
                       borderRadius: BorderRadius.circular(8.r),
                     ),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         Text(
-                          "Email",
-                          style: TextStyle(fontSize: 14.sp),
+                          "Masuk sebagai Admin",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 18.sp,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                         SizedBox(
-                          height: 5.h,
+                          height: 10.h,
                         ),
                         TextFormField(
                           controller: controller.emailController,
                           keyboardType: TextInputType.text,
                           textInputAction: TextInputAction.next,
                           decoration: InputDecoration(
+                            hintText: "Email",
+                            hintStyle: TextStyle(
+                              color: shadowColor,
+                              fontSize: 16.sp,
+                            ),
                             fillColor: Colors.white,
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(5.r),
@@ -88,21 +85,10 @@ class LoginAdminView extends GetView<LoginAdminController> {
                                 color: Colors.grey,
                               ),
                             ),
-                            hintStyle: TextStyle(
-                              color: const Color(0xFFb2b7bf),
-                              fontSize: 18.sp,
-                            ),
                           ),
                         ),
                         SizedBox(
                           height: 10.h,
-                        ),
-                        Text(
-                          "Password",
-                          style: TextStyle(fontSize: 14.sp),
-                        ),
-                        SizedBox(
-                          height: 5.h,
                         ),
                         TextFormField(
                           controller: controller.passwordController,
@@ -111,6 +97,11 @@ class LoginAdminView extends GetView<LoginAdminController> {
                           obscureText: controller.isObsecure,
                           decoration: InputDecoration(
                             fillColor: Colors.white,
+                            hintText: "Password",
+                            hintStyle: TextStyle(
+                              color: shadowColor,
+                              fontSize: 16.sp,
+                            ),
                             suffixIcon: IconButton(
                               icon: Icon(
                                 controller.isObsecure
@@ -144,10 +135,6 @@ class LoginAdminView extends GetView<LoginAdminController> {
                                 color: Colors.grey,
                               ),
                             ),
-                            hintStyle: TextStyle(
-                              color: const Color(0xFFb2b7bf),
-                              fontSize: 18.sp,
-                            ),
                           ),
                         ),
                         SizedBox(
@@ -165,7 +152,7 @@ class LoginAdminView extends GetView<LoginAdminController> {
                                 ),
                                 onPressed: () => null,
                                 child: const Text(
-                                  "Login",
+                                  "Masuk",
                                   style: TextStyle(
                                     color: Colors.white,
                                   ),
@@ -205,7 +192,7 @@ class LoginAdminView extends GetView<LoginAdminController> {
                     height: 10.h,
                   ),
                   const Text(
-                    "Login sebagai admin?",
+                    "Masuk sebagai pengguna?",
                     textAlign: TextAlign.center,
                   ),
                   SizedBox(
@@ -217,9 +204,9 @@ class LoginAdminView extends GetView<LoginAdminController> {
                         primaryColor,
                       ),
                     ),
-                    onPressed: () => Get.toNamed(Routes.LOGIN_ADMIN),
+                    onPressed: () => Get.toNamed(Routes.LOGIN_USER),
                     child: const Text(
-                      "Login Admin",
+                      "Masuk",
                       style: TextStyle(
                         color: Colors.white,
                       ),

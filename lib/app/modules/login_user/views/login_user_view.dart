@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:toggle_switch/toggle_switch.dart';
 import 'package:travelyuk/app/core/api/api.dart';
 import 'package:travelyuk/app/modules/login_user/services/login_service.dart';
 import 'package:travelyuk/app/routes/app_pages.dart';
 import 'package:travelyuk/app/theme/app_theme.dart';
-
+import 'package:travelyuk/app/utils/app_const.dart';
 import '../controllers/login_user_controller.dart';
 
 class LoginUserView extends GetView<LoginUserController> {
@@ -28,26 +29,6 @@ class LoginUserView extends GetView<LoginUserController> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Login ke ",
-                        style: TextStyle(
-                          fontSize: 24.sp,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        "Travel Yuk",
-                        style: TextStyle(
-                          fontSize: 24.sp,
-                          fontWeight: FontWeight.bold,
-                          color: primaryColor,
-                        ),
-                      ),
-                    ],
-                  ),
                   SizedBox(
                     height: 10.h,
                   ),
@@ -58,14 +39,19 @@ class LoginUserView extends GetView<LoginUserController> {
                       borderRadius: BorderRadius.circular(8.r),
                     ),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         Text(
-                          "Email",
-                          style: TextStyle(fontSize: 14.sp),
+                          APP_NAME,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 24.sp,
+                            fontWeight: FontWeight.bold,
+                            color: primaryColor,
+                          ),
                         ),
                         SizedBox(
-                          height: 5.h,
+                          height: 10.h,
                         ),
                         TextFormField(
                           controller: controller.emailController,
@@ -73,6 +59,11 @@ class LoginUserView extends GetView<LoginUserController> {
                           textInputAction: TextInputAction.next,
                           decoration: InputDecoration(
                             fillColor: Colors.white,
+                            hintText: "Email",
+                            hintStyle: TextStyle(
+                              color: const Color(0xFFb2b7bf),
+                              fontSize: 14.sp,
+                            ),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(5.r),
                               borderSide: BorderSide(
@@ -94,21 +85,10 @@ class LoginUserView extends GetView<LoginUserController> {
                                 color: Colors.grey,
                               ),
                             ),
-                            hintStyle: TextStyle(
-                              color: const Color(0xFFb2b7bf),
-                              fontSize: 18.sp,
-                            ),
                           ),
                         ),
                         SizedBox(
                           height: 10.h,
-                        ),
-                        Text(
-                          "Password",
-                          style: TextStyle(fontSize: 14.sp),
-                        ),
-                        SizedBox(
-                          height: 5.h,
                         ),
                         TextFormField(
                           controller: controller.passwordController,
@@ -117,6 +97,11 @@ class LoginUserView extends GetView<LoginUserController> {
                           obscureText: controller.isObsecure,
                           decoration: InputDecoration(
                             fillColor: Colors.white,
+                            hintText: "Password",
+                            hintStyle: TextStyle(
+                              color: const Color(0xFFb2b7bf),
+                              fontSize: 14.sp,
+                            ),
                             suffixIcon: IconButton(
                               icon: Icon(
                                 controller.isObsecure
@@ -150,11 +135,30 @@ class LoginUserView extends GetView<LoginUserController> {
                                 color: Colors.grey,
                               ),
                             ),
-                            hintStyle: TextStyle(
-                              color: const Color(0xFFb2b7bf),
-                              fontSize: 18.sp,
-                            ),
                           ),
+                        ),
+                        SizedBox(
+                          height: 10.h,
+                        ),
+                        ToggleSwitch(
+                          customWidths: [Get.width.w, Get.width.w],
+                          cornerRadius: 20.0,
+                          activeBgColors: const [
+                            [Colors.cyan],
+                            [Colors.redAccent]
+                          ],
+                          activeFgColor: Colors.white,
+                          inactiveBgColor: Colors.grey,
+                          inactiveFgColor: Colors.white,
+                          totalSwitches: 2,
+                          labels: const ['Pengguna', 'Admin'],
+                          icons: const [
+                            FontAwesomeIcons.user,
+                            FontAwesomeIcons.userTie
+                          ],
+                          onToggle: (index) {
+                            controller.toggleRole();
+                          },
                         ),
                         SizedBox(
                           height: 10.h,
@@ -174,7 +178,7 @@ class LoginUserView extends GetView<LoginUserController> {
                                   password: controller.passwordController.text,
                                 ),
                                 child: const Text(
-                                  "Login",
+                                  "Masuk",
                                   style: TextStyle(
                                     color: Colors.white,
                                   ),
@@ -204,31 +208,7 @@ class LoginUserView extends GetView<LoginUserController> {
                     ),
                     onPressed: () => Get.toNamed(Routes.REGISTER),
                     child: const Text(
-                      "Buat Akun",
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  const Text(
-                    "Login sebagai admin?",
-                    textAlign: TextAlign.center,
-                  ),
-                  SizedBox(
-                    height: 5.h,
-                  ),
-                  ElevatedButton(
-                    style: ButtonStyle(
-                      backgroundColor: WidgetStateProperty.all<Color?>(
-                        primaryColor,
-                      ),
-                    ),
-                    onPressed: () => Get.toNamed(Routes.LOGIN_ADMIN),
-                    child: const Text(
-                      "Login Admin",
+                      "Daftar",
                       style: TextStyle(
                         color: Colors.white,
                       ),

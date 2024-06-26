@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+import 'package:travelyuk/app/utils/app_const.dart';
 import '../controllers/splash_controller.dart';
 
 class SplashView extends GetView<SplashController> {
@@ -24,7 +25,7 @@ class SplashView extends GetView<SplashController> {
                   height: 20.h,
                 ),
                 Text(
-                  "Travel Yuk",
+                  APP_NAME,
                   style: TextStyle(
                     fontSize: 24.sp,
                     fontWeight: FontWeight.bold,

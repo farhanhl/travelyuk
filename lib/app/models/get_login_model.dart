@@ -25,6 +25,7 @@ class UserGetLogin {
   String? namaLengkap;
   String? jenisKelamin;
   String? nomorTelfon;
+  bool? isUser;
   String? createdAt;
   String? updatedAt;
 
@@ -34,6 +35,7 @@ class UserGetLogin {
       this.namaLengkap,
       this.jenisKelamin,
       this.nomorTelfon,
+      this.isUser,
       this.createdAt,
       this.updatedAt});
 
@@ -43,6 +45,7 @@ class UserGetLogin {
     namaLengkap = json['nama_lengkap'];
     jenisKelamin = json['jenis_kelamin'];
     nomorTelfon = json['nomor_telfon'];
+    isUser = json['is_user'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
   }
@@ -54,6 +57,7 @@ class UserGetLogin {
     data['nama_lengkap'] = namaLengkap;
     data['jenis_kelamin'] = jenisKelamin;
     data['nomor_telfon'] = nomorTelfon;
+    data['is_user'] = isUser;
     data['created_at'] = createdAt;
     data['updated_at'] = updatedAt;
     return data;

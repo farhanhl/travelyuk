@@ -7,6 +7,7 @@ class RegisterController extends GetxController {
   TextEditingController passwordController = TextEditingController();
   TextEditingController genderController = TextEditingController();
   TextEditingController phoneNumberController = TextEditingController();
+  String? gender;
 
   @override
   void onInit() {

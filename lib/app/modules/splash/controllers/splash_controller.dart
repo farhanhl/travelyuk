@@ -9,7 +9,11 @@ class SplashController extends GetxController {
     super.onInit();
     Future.delayed(const Duration(seconds: 1), () {
       if (auth.isAuthenticated == true) {
-        Get.offNamed(Routes.DASHBOARD);
+        if (auth.isUser == true) {
+          Get.offNamed(Routes.DASHBOARD);
+        } else {
+          Get.offNamed(Routes.DASHBOARD_ADMIN);
+        }
       } else {
         Get.offNamed(Routes.LOGIN_USER);
       }

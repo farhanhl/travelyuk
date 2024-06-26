@@ -19,10 +19,15 @@ class LoginUserController extends GetxController {
   final auth = Get.find<AuthController>();
   SubmitLogin submitLogin = SubmitLogin();
   bool isObsecure = true;
+  bool isUser = true;
 
   void toggle() {
     isObsecure = !isObsecure;
     update();
+  }
+
+  void toggleRole() {
+    isUser = !isUser;
   }
 
   void doLogin({
@@ -35,29 +40,29 @@ class LoginUserController extends GetxController {
         backButton: () => Get.back(),
       );
     } else {
-      EasyLoading.show(
-        status: 'loading...',
-        dismissOnTap: false,
-        maskType: EasyLoadingMaskType.black,
-      );
-      submitLogin.email = email;
-      submitLogin.password = password;
-      await service.login(submitLogin).then(
-        (value) {
-          auth.login(value.user);
-          EasyLoading.dismiss();
-          Get.offNamed(Routes.DASHBOARD);
-        },
-      ).catchError(
-        (e) {
-          EasyLoading.dismiss();
-          CustomNotification.errorHandle(
-            message: "$e",
-            backButton: () => Get.back(),
-          );
-        },
-      );
-      update();
+      // EasyLoading.show(
+      //   status: 'loading...',
+      //   dismissOnTap: false,
+      //   maskType: EasyLoadingMaskType.black,
+      // );
+      // submitLogin.email = email;
+      // submitLogin.password = password;
+      // await service.login(submitLogin).then(
+      //   (value) {
+      //     auth.login(value.user);
+      //     EasyLoading.dismiss();
+      Get.offNamed(Routes.DASHBOARD);
+      //     },
+      //   ).catchError(
+      //     (e) {
+      //       EasyLoading.dismiss();
+      //       CustomNotification.errorHandle(
+      //         message: "$e",
+      //         backButton: () => Get.back(),
+      //       );
+      //     },
+      //   );
+      //   update();
     }
   }
 

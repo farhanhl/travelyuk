@@ -1,10 +1,11 @@
+import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:get/get.dart';
 import 'package:travelyuk/app/routes/app_pages.dart';
 import 'package:travelyuk/app/theme/app_theme.dart';
-
+import 'package:travelyuk/app/utils/app_const.dart';
 import '../controllers/register_controller.dart';
 
 class RegisterView extends GetView<RegisterController> {
@@ -22,29 +23,6 @@ class RegisterView extends GetView<RegisterController> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Daftar di ",
-                        style: TextStyle(
-                          fontSize: 24.sp,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        "Travel Yuk",
-                        style: TextStyle(
-                          fontSize: 24.sp,
-                          fontWeight: FontWeight.bold,
-                          color: primaryColor,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 10.h,
-                  ),
                   Container(
                     padding: EdgeInsets.all(16.sp),
                     decoration: BoxDecoration(
@@ -52,14 +30,19 @@ class RegisterView extends GetView<RegisterController> {
                       borderRadius: BorderRadius.circular(8.r),
                     ),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         Text(
-                          "Email",
-                          style: TextStyle(fontSize: 14.sp),
+                          APP_NAME,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 24.sp,
+                            fontWeight: FontWeight.bold,
+                            color: primaryColor,
+                          ),
                         ),
                         SizedBox(
-                          height: 5.h,
+                          height: 10.h,
                         ),
                         TextFormField(
                           controller: controller.emailController,
@@ -67,6 +50,11 @@ class RegisterView extends GetView<RegisterController> {
                           textInputAction: TextInputAction.next,
                           decoration: InputDecoration(
                             fillColor: Colors.white,
+                            labelText: "Email",
+                            labelStyle: TextStyle(
+                              color: const Color(0xFFb2b7bf),
+                              fontSize: 14.sp,
+                            ),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(5.r),
                               borderSide: BorderSide(
@@ -88,21 +76,10 @@ class RegisterView extends GetView<RegisterController> {
                                 color: Colors.grey,
                               ),
                             ),
-                            hintStyle: TextStyle(
-                              color: const Color(0xFFb2b7bf),
-                              fontSize: 18.sp,
-                            ),
                           ),
                         ),
                         SizedBox(
                           height: 10.h,
-                        ),
-                        Text(
-                          "Password",
-                          style: TextStyle(fontSize: 14.sp),
-                        ),
-                        SizedBox(
-                          height: 5.h,
                         ),
                         TextFormField(
                           controller: controller.passwordController,
@@ -110,6 +87,11 @@ class RegisterView extends GetView<RegisterController> {
                           textInputAction: TextInputAction.next,
                           decoration: InputDecoration(
                             fillColor: Colors.white,
+                            labelText: "Password",
+                            labelStyle: TextStyle(
+                              color: const Color(0xFFb2b7bf),
+                              fontSize: 14.sp,
+                            ),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(5.r),
                               borderSide: BorderSide(
@@ -131,21 +113,10 @@ class RegisterView extends GetView<RegisterController> {
                                 color: Colors.grey,
                               ),
                             ),
-                            hintStyle: TextStyle(
-                              color: const Color(0xFFb2b7bf),
-                              fontSize: 18.sp,
-                            ),
                           ),
                         ),
                         SizedBox(
                           height: 10.h,
-                        ),
-                        Text(
-                          "Nama",
-                          style: TextStyle(fontSize: 14.sp),
-                        ),
-                        SizedBox(
-                          height: 5.h,
                         ),
                         TextFormField(
                           controller: controller.nameController,
@@ -153,6 +124,11 @@ class RegisterView extends GetView<RegisterController> {
                           textInputAction: TextInputAction.next,
                           decoration: InputDecoration(
                             fillColor: Colors.white,
+                            labelText: "Nama",
+                            labelStyle: TextStyle(
+                              color: const Color(0xFFb2b7bf),
+                              fontSize: 14.sp,
+                            ),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(5.r),
                               borderSide: BorderSide(
@@ -174,71 +150,55 @@ class RegisterView extends GetView<RegisterController> {
                                 color: Colors.grey,
                               ),
                             ),
-                            hintStyle: TextStyle(
-                              color: const Color(0xFFb2b7bf),
-                              fontSize: 18.sp,
-                            ),
                           ),
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
-                        Text(
-                          "Jenis Kelamin",
-                          style: TextStyle(fontSize: 14.sp),
-                        ),
-                        SizedBox(
-                          height: 5.h,
-                        ),
-                        TextFormField(
-                          controller: controller.genderController,
-                          keyboardType: TextInputType.number,
-                          textInputAction: TextInputAction.done,
-                          decoration: InputDecoration(
-                            fillColor: Colors.white,
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(5.r),
-                              borderSide: BorderSide(
-                                width: 1.w,
-                                color: Colors.grey,
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: 8.w),
+                          decoration: BoxDecoration(
+                            border: Border.all(color: shadowColor),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(4.r),
+                            ),
+                          ),
+                          child: DropdownSearch<String>(
+                            popupProps: const PopupProps.modalBottomSheet(
+                              showSelectedItems: true,
+                            ),
+                            items: const [
+                              "Laki-Laki",
+                              "Perempuan",
+                            ],
+                            dropdownDecoratorProps:
+                                const DropDownDecoratorProps(
+                              dropdownSearchDecoration: InputDecoration(
+                                border: InputBorder.none,
+                                labelText: "Jenis Kelamin",
+                                labelStyle: TextStyle(color: shadowColor),
                               ),
                             ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(5.r),
-                              borderSide: BorderSide(
-                                width: 1.w,
-                                color: Colors.grey,
-                              ),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(5.r),
-                              borderSide: BorderSide(
-                                width: 1.w,
-                                color: Colors.grey,
-                              ),
-                            ),
-                            hintStyle: TextStyle(
-                              color: const Color(0xFFb2b7bf),
-                              fontSize: 18.sp,
-                            ),
+                            onChanged: print,
                           ),
                         ),
                         SizedBox(
                           height: 10.h,
-                        ),
-                        Text(
-                          "Nomor Telfon",
-                          style: TextStyle(fontSize: 14.sp),
-                        ),
-                        SizedBox(
-                          height: 5.h,
                         ),
                         TextFormField(
                           controller: controller.phoneNumberController,
                           keyboardType: TextInputType.number,
                           textInputAction: TextInputAction.next,
+                          inputFormatters: <TextInputFormatter>[
+                            FilteringTextInputFormatter.digitsOnly
+                          ],
                           decoration: InputDecoration(
                             fillColor: Colors.white,
+                            labelText: "Nomor Telfon",
+                            labelStyle: TextStyle(
+                              color: const Color(0xFFb2b7bf),
+                              fontSize: 14.sp,
+                            ),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(5.r),
                               borderSide: BorderSide(
@@ -259,10 +219,6 @@ class RegisterView extends GetView<RegisterController> {
                                 width: 1.w,
                                 color: Colors.grey,
                               ),
-                            ),
-                            hintStyle: TextStyle(
-                              color: const Color(0xFFb2b7bf),
-                              fontSize: 18.sp,
                             ),
                           ),
                         ),
@@ -312,30 +268,6 @@ class RegisterView extends GetView<RegisterController> {
                     onPressed: () => Get.toNamed(Routes.LOGIN_USER),
                     child: const Text(
                       "Masuk",
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  const Text(
-                    "Masuk sebagai admin?",
-                    textAlign: TextAlign.center,
-                  ),
-                  SizedBox(
-                    height: 5.h,
-                  ),
-                  ElevatedButton(
-                    style: ButtonStyle(
-                      backgroundColor: WidgetStateProperty.all<Color?>(
-                        primaryColor,
-                      ),
-                    ),
-                    onPressed: () => Get.toNamed(Routes.LOGIN_ADMIN),
-                    child: const Text(
-                      "Masuk sebagai Admin",
                       style: TextStyle(
                         color: Colors.white,
                       ),

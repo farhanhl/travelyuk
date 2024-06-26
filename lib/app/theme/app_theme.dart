@@ -5,3 +5,4 @@ const darkColor = Colors.black;
 const errorColor = Colors.red;
 const shadowColor = Colors.grey;
 const primaryColor = Color(0xFF006298);
+const transparent = Colors.transparent;

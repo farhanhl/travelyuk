@@ -2,10 +2,12 @@ import 'package:date_field/date_field.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:get/get.dart';
+import 'package:travelyuk/app/core/api/api.dart';
+import 'package:travelyuk/app/modules/home/services/home_service.dart';
 import 'package:travelyuk/app/theme/app_theme.dart';
-
+import 'package:travelyuk/app/utils/app_const.dart';
+import 'package:travelyuk/app/widgets/custom_widgets.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -13,7 +15,11 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<HomeController>(
-      init: HomeController(),
+      init: HomeController(
+        HomeService(
+          Get.find<Api>(),
+        ),
+      ),
       builder: (controller) {
         return Scaffold(
           body: SingleChildScrollView(
@@ -44,7 +50,7 @@ class HomeView extends GetView<HomeController> {
                                 ),
                               ),
                               Text(
-                                "Travel Yuk",
+                                APP_NAME,
                                 style: TextStyle(
                                   fontSize: 14.sp,
                                   fontWeight: FontWeight.w800,
@@ -155,10 +161,14 @@ class HomeView extends GetView<HomeController> {
                               style: ButtonStyle(
                                 backgroundColor:
                                     WidgetStateProperty.all<Color?>(
-                                  primaryColor,
+                                  controller.isAllFilled()
+                                      ? primaryColor
+                                      : shadowColor,
                                 ),
                               ),
-                              onPressed: () => null,
+                              onPressed: () => controller.isAllFilled()
+                                  ? controller.doSearchBus()
+                                  : null,
                               child: const Text(
                                 "Cari Bus",
                                 style: TextStyle(
@@ -171,7 +181,8 @@ class HomeView extends GetView<HomeController> {
                       )
                     ],
                   ),
-                )
+                ),
+                CustomWidget.paymentInformation(10000),
               ],
             ),
           ),
