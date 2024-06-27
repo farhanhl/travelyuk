@@ -5,39 +5,16 @@ import 'package:get/get.dart';
 import 'package:travelyuk/app/theme/app_theme.dart';
 
 class CustomNotification {
-  static networkErrorHandle({required String message}) {
-    return Get.rawSnackbar(
-      messageText: Text(
-        message,
-        style: TextStyle(
-          color: lightColor,
-          fontSize: 14.sp,
-        ),
-      ),
-      isDismissible: false,
-      duration: const Duration(days: 1),
-      backgroundColor: errorColor,
-      icon: const Icon(
-        Icons.wifi_off,
-        color: lightColor,
-        size: 35,
-      ),
-      margin: EdgeInsets.zero,
-      padding: EdgeInsets.symmetric(
-        horizontal: 20.w,
-      ),
-      snackStyle: SnackStyle.GROUNDED,
-    );
-  }
-
-  static errorHandle({
+  static show({
     required VoidCallback backButton,
     String backButtonText = "Kembali",
     String proceedButtonText = "Go",
     VoidCallback? proceedButton,
-    String title = "Terjadi kesalahan",
-    String message = "Something Went Wrong",
+    String errorTitle = "Terjadi kesalahan",
+    String successTitle = "Berhasil",
+    String message = "Ada sesuatu yang",
     bool isHasTwoButton = false,
+    required bool isSuccess,
   }) {
     return Get.defaultDialog(
       barrierDismissible: false,
@@ -55,7 +32,9 @@ class CustomNotification {
             child: Column(
               children: [
                 Image.asset(
-                  "assets/images/error.png",
+                  isSuccess
+                      ? "assets/images/success.png"
+                      : "assets/images/error.png",
                   height: 150.h,
                   width: 150.w,
                   fit: BoxFit.cover,
@@ -64,7 +43,7 @@ class CustomNotification {
                   height: 10.h,
                 ),
                 Text(
-                  title,
+                  isSuccess ? successTitle : errorTitle,
                   style: TextStyle(fontSize: 20.sp),
                 ),
                 SizedBox(

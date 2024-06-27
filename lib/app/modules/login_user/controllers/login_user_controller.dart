@@ -36,8 +36,9 @@ class LoginUserController extends GetxController {
     String? password,
   }) async {
     if (email!.isEmpty || password!.isEmpty) {
-      CustomNotification.errorHandle(
-        message: "Email atau Password Belum Diisi",
+      CustomNotification.show(
+        message: "Semua data harus diisi",
+        isSuccess: false,
         backButton: () => Get.back(),
       );
     } else {
@@ -65,8 +66,9 @@ class LoginUserController extends GetxController {
       ).catchError(
         (e) {
           EasyLoading.dismiss();
-          CustomNotification.errorHandle(
+          CustomNotification.show(
             message: "$e",
+            isSuccess: false,
             backButton: () => Get.back(),
           );
         },

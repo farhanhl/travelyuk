@@ -14,17 +14,17 @@ class LoginService {
       return GetLogin.fromJson(value.data);
     }).catchError(
       (e) {
-        ErrorModel errorHandler = ErrorModel();
+        ErrorModel showr = ErrorModel();
         bool isJSON() {
           try {
-            errorHandler = ErrorModel.fromJson(json.decode("${e.response}"));
+            showr = ErrorModel.fromJson(json.decode("${e.response}"));
             return true;
           } catch (e) {
             return false;
           }
         }
 
-        throw isJSON() ? errorHandler.message! : DEFAULT_ERROR_MESSAGE;
+        throw isJSON() ? showr.message! : DEFAULT_ERROR_MESSAGE;
       },
     );
   }

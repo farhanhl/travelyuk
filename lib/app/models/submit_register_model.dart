@@ -4,13 +4,15 @@ class SubmitRegister {
   String? namaLengkap;
   String? jenisKelamin;
   String? nomorTelfon;
+  bool? isAdmin;
 
   SubmitRegister(
       {this.email,
       this.password,
       this.namaLengkap,
       this.jenisKelamin,
-      this.nomorTelfon});
+      this.nomorTelfon,
+      this.isAdmin});
 
   SubmitRegister.fromJson(Map<String, dynamic> json) {
     email = json['email'];
@@ -18,6 +20,7 @@ class SubmitRegister {
     namaLengkap = json['nama_lengkap'];
     jenisKelamin = json['jenis_kelamin'];
     nomorTelfon = json['nomor_telfon'];
+    isAdmin = json['is_admin'];
   }
 
   Map<String, dynamic> toJson() {
@@ -27,6 +30,7 @@ class SubmitRegister {
     data['nama_lengkap'] = namaLengkap;
     data['jenis_kelamin'] = jenisKelamin;
     data['nomor_telfon'] = nomorTelfon;
+    data['is_admin'] = isAdmin;
     return data;
   }
 }

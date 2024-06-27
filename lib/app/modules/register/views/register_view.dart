@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:travelyuk/app/core/api/api.dart';
+import 'package:travelyuk/app/modules/register/services/register_service.dart';
 import 'package:travelyuk/app/routes/app_pages.dart';
 import 'package:travelyuk/app/theme/app_theme.dart';
 import 'package:travelyuk/app/utils/app_const.dart';
@@ -13,7 +15,11 @@ class RegisterView extends GetView<RegisterController> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<RegisterController>(
-      init: RegisterController(),
+      init: RegisterController(
+        RegisterService(
+          Get.find<Api>(),
+        ),
+      ),
       builder: (controller) {
         return Scaffold(
           resizeToAvoidBottomInset: false,
@@ -85,12 +91,25 @@ class RegisterView extends GetView<RegisterController> {
                           controller: controller.passwordController,
                           keyboardType: TextInputType.number,
                           textInputAction: TextInputAction.next,
+                          obscureText: controller.isObsecure,
                           decoration: InputDecoration(
                             fillColor: Colors.white,
-                            labelText: "Password",
-                            labelStyle: TextStyle(
+                            hintText: "Password",
+                            hintStyle: TextStyle(
                               color: const Color(0xFFb2b7bf),
                               fontSize: 14.sp,
+                            ),
+                            suffixIcon: IconButton(
+                              icon: Icon(
+                                controller.isObsecure
+                                    ? Icons.visibility
+                                    : Icons.visibility_off,
+                                color: primaryColor,
+                              ),
+                              onPressed: () {
+                                controller.toggle();
+                              },
+                              splashRadius: 24.r,
                             ),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(5.r),
@@ -168,7 +187,7 @@ class RegisterView extends GetView<RegisterController> {
                               showSelectedItems: true,
                             ),
                             items: const [
-                              "Laki-Laki",
+                              "Laki-laki",
                               "Perempuan",
                             ],
                             dropdownDecoratorProps:
@@ -179,7 +198,8 @@ class RegisterView extends GetView<RegisterController> {
                                 labelStyle: TextStyle(color: shadowColor),
                               ),
                             ),
-                            onChanged: print,
+                            onChanged: (value) =>
+                                controller.changeGender(value ?? ""),
                           ),
                         ),
                         SizedBox(
@@ -235,7 +255,15 @@ class RegisterView extends GetView<RegisterController> {
                                     primaryColor,
                                   ),
                                 ),
-                                onPressed: () => null,
+                                onPressed: () => controller.doRegister(
+                                  inputedEmail: controller.emailController.text,
+                                  inputedPassword:
+                                      controller.passwordController.text,
+                                  inputedGender: controller.gender ?? "",
+                                  inputedName: controller.nameController.text,
+                                  inputedPhoneNumber:
+                                      controller.phoneNumberController.text,
+                                ),
                                 child: const Text(
                                   "Daftar",
                                   style: TextStyle(

@@ -65,7 +65,7 @@ class HomeController extends GetxController {
     // ).catchError(
     //   (e) {
     //     EasyLoading.dismiss();
-    //     CustomNotification.errorHandle(
+    //     CustomNotification.show(
     //       message: "$e",
     //       backButton: () => Get.back(),
     //     );
