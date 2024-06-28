@@ -30,26 +30,26 @@ class ProfileView extends GetView<ProfileController> {
                   textInputAction: TextInputAction.next,
                   enabled: false,
                   decoration: InputDecoration(
-                    fillColor: Colors.white,
+                    fillColor: lightColor,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5.r),
                       borderSide: BorderSide(
                         width: 1.w,
-                        color: Colors.grey,
+                        color: shadowColor,
                       ),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5.r),
                       borderSide: BorderSide(
                         width: 1.w,
-                        color: Colors.grey,
+                        color: shadowColor,
                       ),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5.r),
                       borderSide: BorderSide(
                         width: 1.w,
-                        color: Colors.grey,
+                        color: shadowColor,
                       ),
                     ),
                     hintStyle: TextStyle(
@@ -74,26 +74,26 @@ class ProfileView extends GetView<ProfileController> {
                   textInputAction: TextInputAction.next,
                   enabled: false,
                   decoration: InputDecoration(
-                    fillColor: Colors.white,
+                    fillColor: lightColor,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5.r),
                       borderSide: BorderSide(
                         width: 1.w,
-                        color: Colors.grey,
+                        color: shadowColor,
                       ),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5.r),
                       borderSide: BorderSide(
                         width: 1.w,
-                        color: Colors.grey,
+                        color: shadowColor,
                       ),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5.r),
                       borderSide: BorderSide(
                         width: 1.w,
-                        color: Colors.grey,
+                        color: shadowColor,
                       ),
                     ),
                     hintStyle: TextStyle(
@@ -118,26 +118,26 @@ class ProfileView extends GetView<ProfileController> {
                   textInputAction: TextInputAction.done,
                   enabled: false,
                   decoration: InputDecoration(
-                    fillColor: Colors.white,
+                    fillColor: lightColor,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5.r),
                       borderSide: BorderSide(
                         width: 1.w,
-                        color: Colors.grey,
+                        color: shadowColor,
                       ),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5.r),
                       borderSide: BorderSide(
                         width: 1.w,
-                        color: Colors.grey,
+                        color: shadowColor,
                       ),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5.r),
                       borderSide: BorderSide(
                         width: 1.w,
-                        color: Colors.grey,
+                        color: shadowColor,
                       ),
                     ),
                     hintStyle: TextStyle(
@@ -162,26 +162,26 @@ class ProfileView extends GetView<ProfileController> {
                   textInputAction: TextInputAction.next,
                   enabled: false,
                   decoration: InputDecoration(
-                    fillColor: Colors.white,
+                    fillColor: lightColor,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5.r),
                       borderSide: BorderSide(
                         width: 1.w,
-                        color: Colors.grey,
+                        color: shadowColor,
                       ),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5.r),
                       borderSide: BorderSide(
                         width: 1.w,
-                        color: Colors.grey,
+                        color: shadowColor,
                       ),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5.r),
                       borderSide: BorderSide(
                         width: 1.w,
-                        color: Colors.grey,
+                        color: shadowColor,
                       ),
                     ),
                     hintStyle: TextStyle(
@@ -206,7 +206,7 @@ class ProfileView extends GetView<ProfileController> {
                         child: const Text(
                           "Keluar",
                           style: TextStyle(
-                            color: Colors.white,
+                            color: lightColor,
                           ),
                         ),
                       ),

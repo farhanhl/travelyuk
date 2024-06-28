@@ -2,9 +2,118 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
+import 'package:travelyuk/app/models/get_schedules_model.dart';
 import 'package:travelyuk/app/theme/app_theme.dart';
 
 class Menu {
+  static Widget scheduleHistory(Schedules? schedule) {
+    return Card(
+      elevation: 0,
+      margin: EdgeInsets.symmetric(vertical: 8.w),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.r),
+      ),
+      color: primaryColor,
+      child: ListTile(
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: [
+                const FaIcon(
+                  FontAwesomeIcons.bus,
+                  size: 16,
+                  color: lightColor,
+                ),
+                SizedBox(
+                  width: 10.w,
+                ),
+                Text(
+                  schedule?.busName ?? "",
+                  style: TextStyle(
+                    fontSize: 18.sp,
+                    color: lightColor,
+                  ),
+                ),
+              ],
+            ),
+            Text(
+              formatDate(schedule?.date ?? ""),
+              style: TextStyle(
+                fontSize: 16.sp,
+                color: lightColor,
+              ),
+            ),
+          ],
+        ),
+        subtitle: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Row(
+              children: [
+                const FaIcon(
+                  FontAwesomeIcons.mapLocationDot,
+                  size: 16,
+                  color: lightColor,
+                ),
+                SizedBox(
+                  width: 10.w,
+                ),
+                Text(
+                  "${schedule?.originCity?.name}",
+                  style: TextStyle(
+                    fontSize: 14.sp,
+                    color: lightColor,
+                  ),
+                ),
+                SizedBox(
+                  width: 5.w,
+                ),
+                const FaIcon(
+                  FontAwesomeIcons.arrowRight,
+                  size: 16,
+                  color: lightColor,
+                ),
+                SizedBox(
+                  width: 5.w,
+                ),
+                Text(
+                  "${schedule?.destinationCity?.name}",
+                  style: TextStyle(
+                    fontSize: 14.sp,
+                    color: lightColor,
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                SizedBox(
+                  width: 3.w,
+                ),
+                const FaIcon(
+                  FontAwesomeIcons.tag,
+                  size: 16,
+                  color: lightColor,
+                ),
+                SizedBox(
+                  width: 12.w,
+                ),
+                Text(
+                  formatCurrency(schedule?.price ?? ""),
+                  style: TextStyle(
+                    fontSize: 14.sp,
+                    color: lightColor,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   static Widget orderHistory(MenuModel? menuModel) {
     return Card(
       elevation: 0,
@@ -40,7 +149,7 @@ class Menu {
             Text(
               formatDate(menuModel?.date ?? ""),
               style: TextStyle(
-                fontSize: 14.sp,
+                fontSize: 16.sp,
                 color: lightColor,
               ),
             ),
@@ -161,4 +270,14 @@ String formatDate(String dateString) {
   DateTime dateTime = DateTime.parse(dateString);
   String formattedDate = DateFormat('d MMMM y', 'id_ID').format(dateTime);
   return formattedDate;
+}
+
+String formatCurrency(String amount) {
+  double parsedAmount = double.tryParse(amount) ?? 0.0;
+  final NumberFormat currencyFormatter = NumberFormat.currency(
+    locale: 'id_ID',
+    symbol: 'Rp. ',
+    decimalDigits: 0,
+  );
+  return currencyFormatter.format(parsedAmount);
 }

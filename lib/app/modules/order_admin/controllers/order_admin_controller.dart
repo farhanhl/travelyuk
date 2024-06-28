@@ -1,12 +1,33 @@
 import 'package:get/get.dart';
+import 'package:travelyuk/app/routes/app_pages.dart';
+import 'package:travelyuk/app/widgets/menu_models.dart';
 
 class OrderAdminController extends GetxController {
-  //TODO: Implement OrderAdminController
+  List<MenuModel>? orderHistory = [];
 
-  final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
+    orderHistory = [
+      MenuModel(
+        from: "Jakarta",
+        to: "Semarang",
+        price: "100.000",
+        busName: "Sinar Jaya",
+        date: DateTime.now().toString(),
+        pax: "2",
+        onTap: () => Get.toNamed(Routes.ORDER_DETAIL),
+      ),
+      MenuModel(
+        from: "Surabaya",
+        to: "Bandung",
+        price: "150.000",
+        busName: "Sinar Mas",
+        date: DateTime.now().toString(),
+        pax: "3",
+        onTap: () => Get.toNamed(Routes.ORDER_DETAIL),
+      ),
+    ];
   }
 
   @override
@@ -18,6 +39,4 @@ class OrderAdminController extends GetxController {
   void onClose() {
     super.onClose();
   }
-
-  void increment() => count.value++;
 }

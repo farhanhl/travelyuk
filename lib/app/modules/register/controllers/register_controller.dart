@@ -3,9 +3,6 @@ import 'dart:developer';
 
 import 'package:get/get.dart';
 import 'package:flutter/widgets.dart';
-import 'package:travelyuk/app/utils/app_func.dart';
-import 'package:travelyuk/app/widgets/notification.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:travelyuk/app/models/submit_register_model.dart';
 import 'package:travelyuk/app/modules/register/services/register_service.dart';
 

@@ -29,7 +29,7 @@ class ProfileController extends GetxController {
 
   void doLogOut() async {
     await auth.logout();
-    Get.offAllNamed(Routes.LOGIN_USER);
+    Get.offAllNamed(Routes.LOGIN);
   }
 
   // @override

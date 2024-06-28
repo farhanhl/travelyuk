@@ -6,18 +6,16 @@ import '../modules/bus_schedule_admin/bindings/bus_schedule_admin_binding.dart';
 import '../modules/bus_schedule_admin/views/bus_schedule_admin_view.dart';
 import '../modules/bus_schedule_user/bindings/bus_schedule_user_binding.dart';
 import '../modules/bus_schedule_user/views/bus_schedule_user_view.dart';
-import '../modules/dashboard/bindings/dashboard_binding.dart';
-import '../modules/dashboard/views/dashboad_view.dart';
 import '../modules/dashboard_admin/bindings/dashboard_admin_binding.dart';
 import '../modules/dashboard_admin/views/dashboard_admin_view.dart';
+import '../modules/dashboard_user/bindings/dashboard_admin_binding.dart';
+import '../modules/dashboard_user/views/dashboard_user_view.dart';
 import '../modules/history/bindings/history_binding.dart';
 import '../modules/history/views/history_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
-import '../modules/login_admin/bindings/login_admin_binding.dart';
-import '../modules/login_admin/views/login_admin_view.dart';
-import '../modules/login_user/bindings/login_user_binding.dart';
-import '../modules/login_user/views/login_user_view.dart';
+import '../modules/login/bindings/login_binding.dart';
+import '../modules/login/views/login_view.dart';
 import '../modules/order_admin/bindings/order_admin_binding.dart';
 import '../modules/order_admin/views/order_admin_view.dart';
 import '../modules/order_detail/bindings/order_detail_binding.dart';
@@ -42,9 +40,9 @@ class AppPages {
 
   static final routes = [
     GetPage(
-      name: _Paths.Dashboard,
-      page: () => const DashboardView(),
-      binding: DashboardBinding(),
+      name: _Paths.DASHBOARD_USER,
+      page: () => const DashboardUserView(),
+      binding: DashboardUserBinding(),
     ),
     GetPage(
       name: _Paths.SPLASH,
@@ -52,14 +50,9 @@ class AppPages {
       binding: SplashBinding(),
     ),
     GetPage(
-      name: _Paths.LOGIN_USER,
-      page: () => const LoginUserView(),
-      binding: LoginUserBinding(),
-    ),
-    GetPage(
-      name: _Paths.LOGIN_ADMIN,
-      page: () => const LoginAdminView(),
-      binding: LoginAdminBinding(),
+      name: _Paths.LOGIN,
+      page: () => const LoginView(),
+      binding: LoginBinding(),
     ),
     GetPage(
       name: _Paths.REGISTER,

@@ -1,23 +1,36 @@
 import 'package:get/get.dart';
+import 'package:travelyuk/app/models/get_login_model.dart';
+import 'package:travelyuk/app/modules/auth/controller/auth_controller.dart';
+import 'package:travelyuk/app/routes/app_pages.dart';
 
 class DashboardAdminController extends GetxController {
-  //TODO: Implement DashboardAdminController
+  final auth = Get.find<AuthController>();
+  UserGetLogin userInformation = UserGetLogin();
+  var tabIndex = 0;
 
-  final count = 0.obs;
+  void changeTabIndex(int index) {
+    tabIndex = index;
+    update();
+  }
+
   @override
-  void onInit() {
+  void onInit() async {
     super.onInit();
+    userInformation = await auth.provideLoginInformation();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  void doLogOut() async {
+    await auth.logout();
+    Get.offAllNamed(Routes.LOGIN);
   }
 
-  @override
-  void onClose() {
-    super.onClose();
-  }
+  // @override
+  // void onReady() {
+  //   super.onReady();
+  // }
 
-  void increment() => count.value++;
+  // @override
+  // void onClose() {
+  //   super.onClose();
+  // }
 }

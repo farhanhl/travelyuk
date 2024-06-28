@@ -55,7 +55,7 @@ class RegisterView extends GetView<RegisterController> {
                           keyboardType: TextInputType.number,
                           textInputAction: TextInputAction.next,
                           decoration: InputDecoration(
-                            fillColor: Colors.white,
+                            fillColor: lightColor,
                             labelText: "Email",
                             labelStyle: TextStyle(
                               color: const Color(0xFFb2b7bf),
@@ -65,21 +65,21 @@ class RegisterView extends GetView<RegisterController> {
                               borderRadius: BorderRadius.circular(5.r),
                               borderSide: BorderSide(
                                 width: 1.w,
-                                color: Colors.grey,
+                                color: shadowColor,
                               ),
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(5.r),
                               borderSide: BorderSide(
                                 width: 1.w,
-                                color: Colors.grey,
+                                color: shadowColor,
                               ),
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(5.r),
                               borderSide: BorderSide(
                                 width: 1.w,
-                                color: Colors.grey,
+                                color: shadowColor,
                               ),
                             ),
                           ),
@@ -91,45 +91,32 @@ class RegisterView extends GetView<RegisterController> {
                           controller: controller.passwordController,
                           keyboardType: TextInputType.number,
                           textInputAction: TextInputAction.next,
-                          obscureText: controller.isObsecure,
                           decoration: InputDecoration(
-                            fillColor: Colors.white,
-                            hintText: "Password",
-                            hintStyle: TextStyle(
+                            fillColor: lightColor,
+                            labelText: "Password",
+                            labelStyle: TextStyle(
                               color: const Color(0xFFb2b7bf),
                               fontSize: 14.sp,
-                            ),
-                            suffixIcon: IconButton(
-                              icon: Icon(
-                                controller.isObsecure
-                                    ? Icons.visibility
-                                    : Icons.visibility_off,
-                                color: primaryColor,
-                              ),
-                              onPressed: () {
-                                controller.toggle();
-                              },
-                              splashRadius: 24.r,
                             ),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(5.r),
                               borderSide: BorderSide(
                                 width: 1.w,
-                                color: Colors.grey,
+                                color: shadowColor,
                               ),
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(5.r),
                               borderSide: BorderSide(
                                 width: 1.w,
-                                color: Colors.grey,
+                                color: shadowColor,
                               ),
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(5.r),
                               borderSide: BorderSide(
                                 width: 1.w,
-                                color: Colors.grey,
+                                color: shadowColor,
                               ),
                             ),
                           ),
@@ -142,7 +129,7 @@ class RegisterView extends GetView<RegisterController> {
                           keyboardType: TextInputType.number,
                           textInputAction: TextInputAction.next,
                           decoration: InputDecoration(
-                            fillColor: Colors.white,
+                            fillColor: lightColor,
                             labelText: "Nama",
                             labelStyle: TextStyle(
                               color: const Color(0xFFb2b7bf),
@@ -152,21 +139,21 @@ class RegisterView extends GetView<RegisterController> {
                               borderRadius: BorderRadius.circular(5.r),
                               borderSide: BorderSide(
                                 width: 1.w,
-                                color: Colors.grey,
+                                color: shadowColor,
                               ),
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(5.r),
                               borderSide: BorderSide(
                                 width: 1.w,
-                                color: Colors.grey,
+                                color: shadowColor,
                               ),
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(5.r),
                               borderSide: BorderSide(
                                 width: 1.w,
-                                color: Colors.grey,
+                                color: shadowColor,
                               ),
                             ),
                           ),
@@ -187,7 +174,7 @@ class RegisterView extends GetView<RegisterController> {
                               showSelectedItems: true,
                             ),
                             items: const [
-                              "Laki-laki",
+                              "Laki-Laki",
                               "Perempuan",
                             ],
                             dropdownDecoratorProps:
@@ -198,8 +185,7 @@ class RegisterView extends GetView<RegisterController> {
                                 labelStyle: TextStyle(color: shadowColor),
                               ),
                             ),
-                            onChanged: (value) =>
-                                controller.changeGender(value ?? ""),
+                            onChanged: print,
                           ),
                         ),
                         SizedBox(
@@ -213,7 +199,7 @@ class RegisterView extends GetView<RegisterController> {
                             FilteringTextInputFormatter.digitsOnly
                           ],
                           decoration: InputDecoration(
-                            fillColor: Colors.white,
+                            fillColor: lightColor,
                             labelText: "Nomor Telfon",
                             labelStyle: TextStyle(
                               color: const Color(0xFFb2b7bf),
@@ -223,21 +209,21 @@ class RegisterView extends GetView<RegisterController> {
                               borderRadius: BorderRadius.circular(5.r),
                               borderSide: BorderSide(
                                 width: 1.w,
-                                color: Colors.grey,
+                                color: shadowColor,
                               ),
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(5.r),
                               borderSide: BorderSide(
                                 width: 1.w,
-                                color: Colors.grey,
+                                color: shadowColor,
                               ),
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(5.r),
                               borderSide: BorderSide(
                                 width: 1.w,
-                                color: Colors.grey,
+                                color: shadowColor,
                               ),
                             ),
                           ),
@@ -255,19 +241,11 @@ class RegisterView extends GetView<RegisterController> {
                                     primaryColor,
                                   ),
                                 ),
-                                onPressed: () => controller.doRegister(
-                                  inputedEmail: controller.emailController.text,
-                                  inputedPassword:
-                                      controller.passwordController.text,
-                                  inputedGender: controller.gender ?? "",
-                                  inputedName: controller.nameController.text,
-                                  inputedPhoneNumber:
-                                      controller.phoneNumberController.text,
-                                ),
+                                onPressed: () => null,
                                 child: const Text(
                                   "Daftar",
                                   style: TextStyle(
-                                    color: Colors.white,
+                                    color: lightColor,
                                   ),
                                 ),
                               ),
@@ -293,11 +271,11 @@ class RegisterView extends GetView<RegisterController> {
                         primaryColor,
                       ),
                     ),
-                    onPressed: () => Get.toNamed(Routes.LOGIN_USER),
+                    onPressed: () => Get.toNamed(Routes.LOGIN),
                     child: const Text(
                       "Masuk",
                       style: TextStyle(
-                        color: Colors.white,
+                        color: lightColor,
                       ),
                     ),
                   ),

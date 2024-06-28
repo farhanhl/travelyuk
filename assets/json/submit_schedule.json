@@ -1,0 +1,8 @@
+{
+    "origin_city_id": 1,
+    "destination_city_id": 2,
+    "date": "2024-07-15",
+    "departure_time": "25:00",
+    "bus_name": "Bus ABC",
+    "price": 150.00
+}

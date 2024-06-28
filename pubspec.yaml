@@ -17,6 +17,9 @@ dependencies:
   font_awesome_flutter: ^10.7.0
   dropdown_search: ^5.0.6
   date_field: ^5.2.1
+  loading_animation_widget: ^1.2.1
+  day_night_time_picker: ^1.3.1
+  smartrefresh: ^0.0.2
   flutter:
     sdk: flutter
 

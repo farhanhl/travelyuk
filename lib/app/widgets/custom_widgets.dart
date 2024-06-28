@@ -8,12 +8,14 @@ import 'package:travelyuk/app/utils/app_const.dart';
 class CustomWidget {
   static AppBar appBar({
     bool isLeading = false,
+    bool isAdmin = false,
+    VoidCallback? signOutFunction,
   }) {
     return AppBar(
       title: const Text(
         'Travel Yuk',
         style: TextStyle(
-          color: Colors.white,
+          color: lightColor,
           fontWeight: FontWeight.w500,
         ),
       ),
@@ -27,10 +29,26 @@ class CustomWidget {
                   size: 20,
                 ),
                 onPressed: () => Get.back(),
-                tooltip: "Back to Dashboard",
+                tooltip: "Kembali",
               ),
             )
           : const SizedBox.shrink(),
+      actions: [
+        isAdmin
+            ? Padding(
+                padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 5.w),
+                child: IconButton(
+                  icon: const Icon(
+                    FontAwesomeIcons.arrowRightFromBracket,
+                    color: lightColor,
+                    size: 20,
+                  ),
+                  onPressed: signOutFunction,
+                  tooltip: "Keluar",
+                ),
+              )
+            : const SizedBox.shrink()
+      ],
       backgroundColor: primaryColor,
       toolbarHeight: 80,
       centerTitle: true,

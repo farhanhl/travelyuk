@@ -3,18 +3,18 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:travelyuk/app/core/api/api.dart';
-import 'package:travelyuk/app/modules/login_user/services/login_service.dart';
+import 'package:travelyuk/app/modules/login/services/login_service.dart';
 import 'package:travelyuk/app/routes/app_pages.dart';
 import 'package:travelyuk/app/theme/app_theme.dart';
 import 'package:travelyuk/app/utils/app_const.dart';
-import '../controllers/login_user_controller.dart';
+import '../controllers/login_controller.dart';
 
-class LoginUserView extends GetView<LoginUserController> {
-  const LoginUserView({super.key});
+class LoginView extends GetView<LoginController> {
+  const LoginView({super.key});
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<LoginUserController>(
-      init: LoginUserController(
+    return GetBuilder<LoginController>(
+      init: LoginController(
         LoginService(
           Get.find<Api>(),
         ),
@@ -57,7 +57,7 @@ class LoginUserView extends GetView<LoginUserController> {
                           keyboardType: TextInputType.text,
                           textInputAction: TextInputAction.next,
                           decoration: InputDecoration(
-                            fillColor: Colors.white,
+                            fillColor: lightColor,
                             hintText: "Email",
                             hintStyle: TextStyle(
                               color: const Color(0xFFb2b7bf),
@@ -67,21 +67,21 @@ class LoginUserView extends GetView<LoginUserController> {
                               borderRadius: BorderRadius.circular(5.r),
                               borderSide: BorderSide(
                                 width: 1.w,
-                                color: Colors.grey,
+                                color: shadowColor,
                               ),
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(5.r),
                               borderSide: BorderSide(
                                 width: 1.w,
-                                color: Colors.grey,
+                                color: shadowColor,
                               ),
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(5.r),
                               borderSide: BorderSide(
                                 width: 1.w,
-                                color: Colors.grey,
+                                color: shadowColor,
                               ),
                             ),
                           ),
@@ -95,7 +95,7 @@ class LoginUserView extends GetView<LoginUserController> {
                           textInputAction: TextInputAction.send,
                           obscureText: controller.isObsecure,
                           decoration: InputDecoration(
-                            fillColor: Colors.white,
+                            fillColor: lightColor,
                             hintText: "Password",
                             hintStyle: TextStyle(
                               color: const Color(0xFFb2b7bf),
@@ -117,21 +117,21 @@ class LoginUserView extends GetView<LoginUserController> {
                               borderRadius: BorderRadius.circular(5.r),
                               borderSide: BorderSide(
                                 width: 1.w,
-                                color: Colors.grey,
+                                color: shadowColor,
                               ),
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(5.r),
                               borderSide: BorderSide(
                                 width: 1.w,
-                                color: Colors.grey,
+                                color: shadowColor,
                               ),
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(5.r),
                               borderSide: BorderSide(
                                 width: 1.w,
-                                color: Colors.grey,
+                                color: shadowColor,
                               ),
                             ),
                           ),
@@ -237,7 +237,7 @@ class LoginUserView extends GetView<LoginUserController> {
                                 child: const Text(
                                   "Masuk",
                                   style: TextStyle(
-                                    color: Colors.white,
+                                    color: lightColor,
                                   ),
                                 ),
                               ),
@@ -267,7 +267,7 @@ class LoginUserView extends GetView<LoginUserController> {
                     child: const Text(
                       "Daftar",
                       style: TextStyle(
-                        color: Colors.white,
+                        color: lightColor,
                       ),
                     ),
                   ),

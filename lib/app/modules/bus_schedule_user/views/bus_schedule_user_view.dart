@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import '../controllers/bus_schedule_user_controller.dart';
 
 class BusScheduleUserView extends GetView<BusScheduleUserController> {
-  const BusScheduleUserView({Key? key}) : super(key: key);
+  const BusScheduleUserView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(

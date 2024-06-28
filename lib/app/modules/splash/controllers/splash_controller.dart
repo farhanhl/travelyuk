@@ -17,8 +17,6 @@ class SplashController extends GetxController {
   void onReady() {
     super.onReady();
     Future.delayed(const Duration(seconds: 1), () {
-      print("isAuthenticated: ${auth.isAuthenticated}");
-      print("isAdmin: ${auth.isAdmin}");
       log(jsonEncode(auth.userInformation));
       if (auth.isAuthenticated == true) {
         if (auth.isAdmin == false) {
@@ -26,10 +24,10 @@ class SplashController extends GetxController {
         } else if (auth.isAdmin == true) {
           Get.offNamed(Routes.DASHBOARD_ADMIN);
         } else {
-          Get.offNamed(Routes.LOGIN_USER);
+          Get.offNamed(Routes.LOGIN);
         }
       } else {
-        Get.offNamed(Routes.LOGIN_USER);
+        Get.offNamed(Routes.LOGIN);
       }
     });
   }

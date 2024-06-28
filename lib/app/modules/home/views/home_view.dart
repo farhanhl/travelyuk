@@ -102,9 +102,9 @@ class HomeView extends GetView<HomeController> {
                         ),
                         onChanged: (value) {
                           controller.changeCity(
-                            isOrigin: true,
-                            city: value?.name ?? "",
-                          );
+                              isOrigin: true,
+                              cityName: value?.name ?? "",
+                              cityId: value?.id ?? 0);
                         },
                       ),
                       SizedBox(
@@ -136,7 +136,8 @@ class HomeView extends GetView<HomeController> {
                         onChanged: (value) {
                           controller.changeCity(
                             isOrigin: false,
-                            city: value?.name ?? "",
+                            cityName: value?.name ?? "",
+                            cityId: value?.id ?? 0,
                           );
                         },
                       ),
@@ -152,13 +153,13 @@ class HomeView extends GetView<HomeController> {
                       ),
                       DateTimeFormField(
                         decoration: const InputDecoration(
-                          hintStyle: TextStyle(color: Colors.black45),
-                          errorStyle: TextStyle(color: Colors.redAccent),
                           border: OutlineInputBorder(),
                           suffixIcon: Icon(Icons.event_note),
                         ),
                         mode: DateTimeFieldPickerMode.date,
-                        onChanged: (DateTime? value) {},
+                        onChanged: (DateTime? value) {
+                          controller.changeDate(value);
+                        },
                       ),
                       SizedBox(
                         height: 5.h,
@@ -175,19 +176,27 @@ class HomeView extends GetView<HomeController> {
                                       : shadowColor,
                                 ),
                               ),
-                              onPressed: () => controller.isAllFilled()
-                                  ? controller.doSearchBus()
-                                  : null,
+                              onPressed: () {
+                                controller.isAllFilled()
+                                    ? controller.doSearchBus(
+                                        inputedOriginCityId:
+                                            controller.originCityId ?? 0,
+                                        inputedDestinationCityId:
+                                            controller.destinationCityId ?? 0,
+                                        inputedDate: controller.date ?? "",
+                                      )
+                                    : null;
+                              },
                               child: const Text(
                                 "Cari Bus",
                                 style: TextStyle(
-                                  color: Colors.white,
+                                  color: lightColor,
                                 ),
                               ),
                             ),
                           ),
                         ],
-                      )
+                      ),
                     ],
                   ),
                 ),

@@ -1,11 +1,8 @@
-import 'dart:convert';
-import 'dart:developer';
-
 import 'package:get/get.dart';
 import 'package:travelyuk/app/models/get_login_model.dart';
 import 'package:travelyuk/app/modules/auth/controller/auth_controller.dart';
 
-class DashboardController extends GetxController {
+class DashboardUserController extends GetxController {
   final auth = Get.find<AuthController>();
   UserGetLogin userInformation = UserGetLogin();
   var tabIndex = 0;
@@ -19,7 +16,6 @@ class DashboardController extends GetxController {
   void onInit() async {
     super.onInit();
     userInformation = await auth.provideLoginInformation();
-    log(jsonEncode(userInformation));
   }
 
   // @override

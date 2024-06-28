@@ -7,14 +7,14 @@ import 'package:travelyuk/app/modules/orders/views/orders_view.dart';
 import 'package:travelyuk/app/modules/profile/views/profile_view.dart';
 import 'package:travelyuk/app/theme/app_theme.dart';
 import 'package:travelyuk/app/widgets/custom_widgets.dart';
-import '../controllers/dashboard_controller.dart';
+import '../controllers/dashboard_user_controller.dart';
 
-class DashboardView extends GetView<DashboardController> {
-  const DashboardView({super.key});
+class DashboardUserView extends GetView<DashboardUserController> {
+  const DashboardUserView({super.key});
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<DashboardController>(
-      init: DashboardController(),
+    return GetBuilder<DashboardUserController>(
+      init: DashboardUserController(),
       builder: (controller) {
         return Scaffold(
           appBar: CustomWidget.appBar(),
@@ -37,7 +37,7 @@ class DashboardView extends GetView<DashboardController> {
           ),
           bottomNavigationBar: BottomNavigationBar(
             selectedItemColor: primaryColor,
-            unselectedItemColor: Colors.grey,
+            unselectedItemColor: shadowColor,
             onTap: controller.changeTabIndex,
             currentIndex: controller.tabIndex,
             type: BottomNavigationBarType.fixed,
