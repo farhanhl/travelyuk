@@ -52,7 +52,7 @@ class RegisterView extends GetView<RegisterController> {
                         ),
                         TextFormField(
                           controller: controller.emailController,
-                          keyboardType: TextInputType.number,
+                          keyboardType: TextInputType.text,
                           textInputAction: TextInputAction.next,
                           decoration: InputDecoration(
                             fillColor: lightColor,
@@ -89,7 +89,7 @@ class RegisterView extends GetView<RegisterController> {
                         ),
                         TextFormField(
                           controller: controller.passwordController,
-                          keyboardType: TextInputType.number,
+                          keyboardType: TextInputType.text,
                           textInputAction: TextInputAction.next,
                           decoration: InputDecoration(
                             fillColor: lightColor,
@@ -126,7 +126,7 @@ class RegisterView extends GetView<RegisterController> {
                         ),
                         TextFormField(
                           controller: controller.nameController,
-                          keyboardType: TextInputType.number,
+                          keyboardType: TextInputType.text,
                           textInputAction: TextInputAction.next,
                           decoration: InputDecoration(
                             fillColor: lightColor,
