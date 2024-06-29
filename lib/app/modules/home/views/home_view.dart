@@ -8,7 +8,6 @@ import 'package:travelyuk/app/models/get_cities_model.dart';
 import 'package:travelyuk/app/modules/home/services/home_service.dart';
 import 'package:travelyuk/app/theme/app_theme.dart';
 import 'package:travelyuk/app/utils/app_const.dart';
-import 'package:travelyuk/app/widgets/custom_widgets.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -79,21 +78,38 @@ class HomeView extends GetView<HomeController> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        "Kota Awal",
-                        style: TextStyle(fontSize: 14.sp),
+                      Row(
+                        children: [
+                          Text(
+                            "Kota Awal",
+                            style: TextStyle(fontSize: 14.sp),
+                          ),
+                          Text(
+                            "*",
+                            style: TextStyle(
+                              fontSize: 14.sp,
+                              color: errorColor,
+                            ),
+                          ),
+                        ],
                       ),
                       SizedBox(
                         height: 5.h,
                       ),
                       DropdownSearch<Cities>(
                         asyncItems: (value) => controller.getCities(),
-                        popupProps: PopupProps.dialog(
+                        popupProps: PopupProps.modalBottomSheet(
                           showSearchBox: true,
-                          itemBuilder: (context, item, isSelected) =>
-                              const ListTile(
+                          modalBottomSheetProps: ModalBottomSheetProps(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(8.r),
+                              ),
+                            ),
+                          ),
+                          itemBuilder: (context, item, isSelected) => ListTile(
                             title: Text(
-                              "-",
+                              "${item.name}",
                             ),
                           ),
                         ),
@@ -102,29 +118,47 @@ class HomeView extends GetView<HomeController> {
                         ),
                         onChanged: (value) {
                           controller.changeCity(
-                              isOrigin: true,
-                              cityName: value?.name ?? "",
-                              cityId: value?.id ?? 0);
+                            isOrigin: true,
+                            cityName: value?.name ?? "",
+                            cityId: value?.id ?? 0,
+                          );
                         },
                       ),
                       SizedBox(
                         height: 10.h,
                       ),
-                      Text(
-                        "Kota Tujuan",
-                        style: TextStyle(fontSize: 14.sp),
+                      Row(
+                        children: [
+                          Text(
+                            "Kota Tujuan",
+                            style: TextStyle(fontSize: 14.sp),
+                          ),
+                          Text(
+                            "*",
+                            style: TextStyle(
+                              fontSize: 14.sp,
+                              color: errorColor,
+                            ),
+                          ),
+                        ],
                       ),
                       SizedBox(
                         height: 5.h,
                       ),
                       DropdownSearch<Cities>(
                         asyncItems: (value) => controller.getCities(),
-                        popupProps: PopupProps.dialog(
+                        popupProps: PopupProps.modalBottomSheet(
                           showSearchBox: true,
-                          itemBuilder: (context, item, isSelected) =>
-                              const ListTile(
+                          modalBottomSheetProps: ModalBottomSheetProps(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(8.r),
+                              ),
+                            ),
+                          ),
+                          itemBuilder: (context, item, isSelected) => ListTile(
                             title: Text(
-                              "-",
+                              "${item.name}",
                             ),
                           ),
                         ),
@@ -144,22 +178,40 @@ class HomeView extends GetView<HomeController> {
                       SizedBox(
                         height: 10.h,
                       ),
-                      Text(
-                        "Tanggal",
-                        style: TextStyle(fontSize: 14.sp),
+                      Row(
+                        children: [
+                          Text(
+                            "Tanggal",
+                            style: TextStyle(fontSize: 14.sp),
+                          ),
+                          Text(
+                            "*",
+                            style: TextStyle(
+                              fontSize: 14.sp,
+                              color: errorColor,
+                            ),
+                          ),
+                        ],
                       ),
                       SizedBox(
                         height: 5.h,
                       ),
-                      DateTimeFormField(
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          suffixIcon: Icon(Icons.event_note),
+                      Container(
+                        padding: EdgeInsets.only(left: 8.w, top: 4.h),
+                        decoration: BoxDecoration(
+                          border: Border.all(color: shadowColor),
+                          borderRadius: BorderRadius.circular(4.r),
                         ),
-                        mode: DateTimeFieldPickerMode.date,
-                        onChanged: (DateTime? value) {
-                          controller.changeDate(value);
-                        },
+                        child: DateTimeFormField(
+                          decoration: const InputDecoration(
+                            border: InputBorder.none,
+                            suffixIcon: Icon(Icons.event_note),
+                          ),
+                          mode: DateTimeFieldPickerMode.date,
+                          onChanged: (DateTime? value) {
+                            controller.changeDate(value);
+                          },
+                        ),
                       ),
                       SizedBox(
                         height: 5.h,
@@ -200,7 +252,6 @@ class HomeView extends GetView<HomeController> {
                     ],
                   ),
                 ),
-                CustomWidget.paymentInformation(10000),
               ],
             ),
           ),

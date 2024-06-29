@@ -8,7 +8,7 @@ class AuthCacheService {
   // Data User
   Future<void> saveLogininfo(UserGetLogin? userData) async {
     await box.remove(LOGIN_INFORMATION);
-    await box.write(LOGIN_INFORMATION, userData);
+    await box.write(LOGIN_INFORMATION, userData?.toJson());
   }
 
   Map<String, dynamic> readLoginInfo() {

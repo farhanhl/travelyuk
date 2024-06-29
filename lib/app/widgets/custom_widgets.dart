@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:travelyuk/app/theme/app_theme.dart';
 import 'package:travelyuk/app/utils/app_const.dart';
+import 'package:travelyuk/app/utils/app_func.dart';
 
 class CustomWidget {
   static AppBar appBar({
@@ -13,7 +14,7 @@ class CustomWidget {
   }) {
     return AppBar(
       title: const Text(
-        'Travel Yuk',
+        APP_NAME,
         style: TextStyle(
           color: lightColor,
           fontWeight: FontWeight.w500,
@@ -55,32 +56,50 @@ class CustomWidget {
     );
   }
 
-  static Widget paymentInformation(int? total) {
-    return SizedBox(
-      height: 100.h,
-      child: SizedBox(
-        height: Get.height.h,
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Image.asset("assets/images/bca.png"),
-            SizedBox(
-              width: 10.w,
+  static Widget paymentInformation(String? total) {
+    return Container(
+      height: 160.sp,
+      padding: EdgeInsets.all(8.sp),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8.r),
+        border: Border.all(),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            "Silahkan Melakukan Pembayaran",
+            style: TextStyle(
+              fontSize: 16.sp,
+              fontWeight: FontWeight.bold,
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: 10.h,
-                ),
-                const Text("Nomor Rekening: $ACCOUNT_NUMBER"),
-                const Text("Atas Nama: $ACCOUNT_HOLDER_NAME"),
-                const Text("Bank: $BANK_NAME"),
-                Text("Total: Rp.$total"),
-              ],
-            )
-          ],
-        ),
+            maxLines: 2,
+            textAlign: TextAlign.center,
+          ),
+          SizedBox(height: 10.h),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                "assets/images/bca.png",
+                width: 100.w,
+                height: 100.h,
+              ),
+              SizedBox(width: 10.w),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text("Nomor Rekening: $ACCOUNT_NUMBER"),
+                  const Text("Atas Nama: $ACCOUNT_HOLDER_NAME"),
+                  const Text("Bank: $BANK_NAME"),
+                  Text("Total: ${formatCurrency(total ?? "")}"),
+                ],
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }

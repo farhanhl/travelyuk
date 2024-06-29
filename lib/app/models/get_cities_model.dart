@@ -29,6 +29,9 @@ class Cities {
 
   Cities({this.id, this.name, this.createdAt, this.updatedAt});
 
+  @override
+  String toString() => "$name";
+
   Cities.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];

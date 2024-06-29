@@ -1,12 +1,10 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:travelyuk/app/models/get_login_model.dart';
-import 'package:travelyuk/app/modules/auth/controller/auth_controller.dart';
+import 'package:flutter/material.dart';
 import 'package:travelyuk/app/routes/app_pages.dart';
+import 'package:travelyuk/app/modules/auth/controller/auth_controller.dart';
 
 class ProfileController extends GetxController {
   final auth = Get.find<AuthController>();
-  UserGetLogin userInformation = UserGetLogin();
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController genderController = TextEditingController();
@@ -15,15 +13,14 @@ class ProfileController extends GetxController {
   @override
   void onInit() async {
     super.onInit();
-    userInformation = await auth.provideLoginInformation();
     setProfileData();
   }
 
   void setProfileData() {
-    nameController.text = userInformation.namaLengkap ?? "";
-    emailController.text = userInformation.email ?? "";
-    genderController.text = userInformation.jenisKelamin ?? "";
-    phoneNumberController.text = userInformation.nomorTelfon ?? "";
+    nameController.text = auth.userInformation.namaLengkap ?? "";
+    emailController.text = auth.userInformation.email ?? "";
+    genderController.text = auth.userInformation.jenisKelamin ?? "";
+    phoneNumberController.text = auth.userInformation.nomorTelfon ?? "";
     update();
   }
 

@@ -1,13 +1,13 @@
 class GetOrders {
-  List<Orders>? orders;
+  List<Order>? orders;
 
   GetOrders({this.orders});
 
   GetOrders.fromJson(Map<String, dynamic> json) {
     if (json['orders'] != null) {
-      orders = <Orders>[];
+      orders = <Order>[];
       json['orders'].forEach((v) {
-        orders?.add(Orders.fromJson(v));
+        orders?.add(Order.fromJson(v));
       });
     }
   }
@@ -21,31 +21,46 @@ class GetOrders {
   }
 }
 
-class Orders {
+class Order {
   int? id;
   int? userId;
   int? scheduleId;
-  String? paymentStatus;
+  String? pax;
+  String? price;
+  bool? isPaid;
+  bool? isPaymentAccepted;
+  bool? isRefund;
+  bool? isRefundAccepted;
   String? createdAt;
   String? updatedAt;
   User? user;
   Schedule? schedule;
 
-  Orders(
+  Order(
       {this.id,
       this.userId,
       this.scheduleId,
-      this.paymentStatus,
+      this.pax,
+      this.price,
+      this.isPaid,
+      this.isPaymentAccepted,
+      this.isRefund,
+      this.isRefundAccepted,
       this.createdAt,
       this.updatedAt,
       this.user,
       this.schedule});
 
-  Orders.fromJson(Map<String, dynamic> json) {
+  Order.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     userId = json['user_id'];
     scheduleId = json['schedule_id'];
-    paymentStatus = json['payment_status'];
+    pax = json['pax'];
+    price = json['price'];
+    isPaid = json['is_paid'];
+    isPaymentAccepted = json['is_payment_accepted'];
+    isRefund = json['is_refund'];
+    isRefundAccepted = json['is_refund_accepted'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
     user = json['user'] != null ? User?.fromJson(json['user']) : null;
@@ -58,7 +73,12 @@ class Orders {
     data['id'] = id;
     data['user_id'] = userId;
     data['schedule_id'] = scheduleId;
-    data['payment_status'] = paymentStatus;
+    data['pax'] = pax;
+    data['price'] = price;
+    data['is_paid'] = isPaid;
+    data['is_payment_accepted'] = isPaymentAccepted;
+    data['is_refund'] = isRefund;
+    data['is_refund_accepted'] = isRefundAccepted;
     data['created_at'] = createdAt;
     data['updated_at'] = updatedAt;
     if (user != null) {
@@ -77,6 +97,7 @@ class User {
   String? namaLengkap;
   String? jenisKelamin;
   String? nomorTelfon;
+  bool? isAdmin;
   String? createdAt;
   String? updatedAt;
 
@@ -86,6 +107,7 @@ class User {
       this.namaLengkap,
       this.jenisKelamin,
       this.nomorTelfon,
+      this.isAdmin,
       this.createdAt,
       this.updatedAt});
 
@@ -95,6 +117,7 @@ class User {
     namaLengkap = json['nama_lengkap'];
     jenisKelamin = json['jenis_kelamin'];
     nomorTelfon = json['nomor_telfon'];
+    isAdmin = json['is_admin'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
   }
@@ -106,6 +129,7 @@ class User {
     data['nama_lengkap'] = namaLengkap;
     data['jenis_kelamin'] = jenisKelamin;
     data['nomor_telfon'] = nomorTelfon;
+    data['is_admin'] = isAdmin;
     data['created_at'] = createdAt;
     data['updated_at'] = updatedAt;
     return data;

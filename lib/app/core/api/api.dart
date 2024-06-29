@@ -1,10 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:travelyuk/app/models/submit_login_model.dart';
+import 'package:travelyuk/app/models/submit_order_model.dart';
 import 'package:travelyuk/app/models/submit_register_model.dart';
 import 'package:travelyuk/app/models/submit_schedule_model.dart';
 import 'package:travelyuk/app/models/submit_search_schedule_model.dart';
 
-const baseUrl = 'http://10.0.2.2:8000/api';
+const baseUrl = 'https://harapanjaya.xyz/api';
 
 class Api {
   final Dio dio = Dio(
@@ -32,11 +33,33 @@ class Api {
     return dio.get("/get_schedules");
   }
 
+  // Orders
+  Future<Response> getOrders() {
+    return dio.get("/get_orders");
+  }
+
+  Future<Response> getOrdersByUser(int id) {
+    return dio.get("/get_orders/$id");
+  }
+
+  Future<Response> changeStatus(int id, String status) {
+    return dio.put("/change_status/$id", data: {"status": status});
+  }
+
+  Future<Response> getOrder(int id) {
+    return dio.get("/get_order/$id");
+  }
+  // End Of Orders Section
+
   Future<Response> searchSchedule(SubmitSearchSchedule submitSearchSchedule) {
     return dio.post("/search_schedules", data: submitSearchSchedule);
   }
 
   Future<Response> addSchedule(SubmitSchedule submitSchedule) {
     return dio.post("/add_schedule", data: submitSchedule);
+  }
+
+  Future<Response> addOrder(SubmitOrder submitOrder) {
+    return dio.post("/add_order", data: submitOrder);
   }
 }

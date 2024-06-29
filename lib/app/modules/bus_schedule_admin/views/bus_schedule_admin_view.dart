@@ -72,7 +72,7 @@ class BusScheduleAdminView extends GetView<BusScheduleAdminController> {
                               fit: BoxFit.cover,
                             ),
                             const Text(
-                              "Gagal memuat pesanan...",
+                              "Gagal memuat jadwal...",
                               maxLines: 2,
                               textAlign: TextAlign.center,
                             ),
@@ -104,7 +104,7 @@ class BusScheduleAdminView extends GetView<BusScheduleAdminController> {
                                   size: 200,
                                 ),
                                 const Text(
-                                  "Memuat daftar pesanan...",
+                                  "Memuat daftar jadwal...",
                                   maxLines: 2,
                                   textAlign: TextAlign.center,
                                 )
@@ -157,6 +157,7 @@ class BusScheduleAdminView extends GetView<BusScheduleAdminController> {
                                         (BuildContext context, int index) {
                                       return Menu.scheduleHistory(
                                         controller.schedule.schedules?[index],
+                                        false,
                                       );
                                     },
                                   ),

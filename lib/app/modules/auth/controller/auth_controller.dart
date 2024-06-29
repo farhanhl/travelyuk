@@ -36,7 +36,6 @@ class AuthController extends GetxController {
     var tempUserData = authCacheService.readLoginInfo();
     userInformation = UserGetLogin.fromJson(tempUserData);
     isAdmin = authCacheService.readIsAdmin();
-    isAuthenticated = await authCacheService.readIsAuthenticated();
   }
 
   Future<UserGetLogin> provideLoginInformation() async {

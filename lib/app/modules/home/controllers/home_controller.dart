@@ -73,32 +73,51 @@ class HomeController extends GetxController {
     required int inputedDestinationCityId,
     required String inputedDate,
   }) async {
-    EasyLoading.show(
-      status: 'loading...',
-      dismissOnTap: false,
-      maskType: EasyLoadingMaskType.black,
-    );
-    submitSearchSchedule = SubmitSearchSchedule(
-      originCityId: inputedOriginCityId,
-      destinationCityId: inputedOriginCityId,
-      date: inputedDate,
-    );
-    await service.searchSchedule(submitSearchSchedule).then(
-      (value) {
-        EasyLoading.dismiss();
-        // Get.toNamed(Routes.Sche);
-      },
-    ).catchError(
-      (e) {
-        EasyLoading.dismiss();
-        CustomNotification.show(
-          message: "$e",
-          isSuccess: false,
-          backButton: () => Get.back(),
-        );
-      },
-    );
-    update();
+    if (inputedOriginCityId == inputedDestinationCityId) {
+      CustomNotification.show(
+        message: "Kota yang dituju harus berbeda dengan kota awal",
+        isSuccess: false,
+        backButton: () => Get.back(),
+      );
+    } else {
+      EasyLoading.show(
+        status: 'loading...',
+        dismissOnTap: false,
+        maskType: EasyLoadingMaskType.black,
+      );
+      submitSearchSchedule = SubmitSearchSchedule(
+        originCityId: inputedOriginCityId,
+        destinationCityId: inputedDestinationCityId,
+        date: inputedDate,
+      );
+      await service.searchSchedule(submitSearchSchedule).then(
+        (value) {
+          EasyLoading.dismiss();
+          if (value.schedules?.isEmpty ?? false) {
+            CustomNotification.show(
+              message: "Untuk saat ini tidak ada jadwal yang tersedia",
+              isSuccess: false,
+              backButton: () => Get.back(),
+            );
+          } else {
+            Get.toNamed(
+              Routes.SCHEDULE_RESULT,
+              arguments: value,
+            );
+          }
+        },
+      ).catchError(
+        (e) {
+          EasyLoading.dismiss();
+          CustomNotification.show(
+            message: "$e",
+            isSuccess: false,
+            backButton: () => Get.back(),
+          );
+        },
+      );
+      update();
+    }
   }
 
   // @override

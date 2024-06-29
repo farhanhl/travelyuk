@@ -1,12 +1,18 @@
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:intl/intl.dart';
-import 'package:travelyuk/app/models/get_schedules_model.dart';
+import 'package:travelyuk/app/models/get_orders_model.dart';
+import 'package:travelyuk/app/utils/app_func.dart';
 import 'package:travelyuk/app/theme/app_theme.dart';
+import 'package:travelyuk/app/routes/app_pages.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:travelyuk/app/models/get_schedules_model.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Menu {
-  static Widget scheduleHistory(Schedules? schedule) {
+  static Widget scheduleHistory(
+    Schedules? schedule,
+    bool isSearchResult,
+  ) {
     return Card(
       elevation: 0,
       margin: EdgeInsets.symmetric(vertical: 8.w),
@@ -15,6 +21,9 @@ class Menu {
       ),
       color: primaryColor,
       child: ListTile(
+        onTap: () => isSearchResult
+            ? Get.toNamed(Routes.ORDER_CONFIRMATION, arguments: schedule)
+            : null,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -108,13 +117,35 @@ class Menu {
                 ),
               ],
             ),
+            Row(
+              children: [
+                SizedBox(
+                  width: 3.w,
+                ),
+                const FaIcon(
+                  FontAwesomeIcons.clock,
+                  size: 16,
+                  color: lightColor,
+                ),
+                SizedBox(
+                  width: 12.w,
+                ),
+                Text(
+                  schedule?.departureTime ?? "",
+                  style: TextStyle(
+                    fontSize: 14.sp,
+                    color: lightColor,
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       ),
     );
   }
 
-  static Widget orderHistory(MenuModel? menuModel) {
+  static Widget orderHistory(Order? order, bool isAdmin) {
     return Card(
       elevation: 0,
       margin: EdgeInsets.symmetric(vertical: 8.w),
@@ -123,7 +154,9 @@ class Menu {
       ),
       color: primaryColor,
       child: ListTile(
-        onTap: menuModel?.onTap,
+        onTap: () => isAdmin
+            ? Get.toNamed(Routes.ORDER_DETAIL_ADMIN, arguments: order)
+            : Get.toNamed(Routes.ORDER_DETAIL, arguments: order),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -138,7 +171,7 @@ class Menu {
                   width: 10.w,
                 ),
                 Text(
-                  menuModel?.busName ?? "",
+                  order?.schedule?.busName ?? "",
                   style: TextStyle(
                     fontSize: 18.sp,
                     color: lightColor,
@@ -147,7 +180,7 @@ class Menu {
               ],
             ),
             Text(
-              formatDate(menuModel?.date ?? ""),
+              formatDate(order?.schedule?.date ?? ""),
               style: TextStyle(
                 fontSize: 16.sp,
                 color: lightColor,
@@ -169,7 +202,7 @@ class Menu {
                   width: 10.w,
                 ),
                 Text(
-                  "${menuModel?.from}",
+                  "${order?.schedule?.originCity?.name}",
                   style: TextStyle(
                     fontSize: 14.sp,
                     color: lightColor,
@@ -187,7 +220,7 @@ class Menu {
                   width: 5.w,
                 ),
                 Text(
-                  "${menuModel?.to}",
+                  "${order?.schedule?.destinationCity?.name}",
                   style: TextStyle(
                     fontSize: 14.sp,
                     color: lightColor,
@@ -209,7 +242,7 @@ class Menu {
                   width: 12.w,
                 ),
                 Text(
-                  "Rp. ${menuModel?.price}",
+                  "Rp. ${order?.price}",
                   style: TextStyle(
                     fontSize: 14.sp,
                     color: lightColor,
@@ -231,7 +264,7 @@ class Menu {
                   width: 12.w,
                 ),
                 Text(
-                  "${menuModel?.pax}",
+                  "${order?.pax}",
                   style: TextStyle(
                     fontSize: 14.sp,
                     color: lightColor,
@@ -264,20 +297,4 @@ class MenuModel {
     required this.pax,
     required this.onTap,
   });
-}
-
-String formatDate(String dateString) {
-  DateTime dateTime = DateTime.parse(dateString);
-  String formattedDate = DateFormat('d MMMM y', 'id_ID').format(dateTime);
-  return formattedDate;
-}
-
-String formatCurrency(String amount) {
-  double parsedAmount = double.tryParse(amount) ?? 0.0;
-  final NumberFormat currencyFormatter = NumberFormat.currency(
-    locale: 'id_ID',
-    symbol: 'Rp. ',
-    decimalDigits: 0,
-  );
-  return currencyFormatter.format(parsedAmount);
 }

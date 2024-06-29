@@ -10,12 +10,8 @@ import 'package:travelyuk/app/modules/login/services/login_service.dart';
 class LoginController extends GetxController {
   LoginService service;
   LoginController(this.service);
-  TextEditingController emailController = TextEditingController(
-    text: "farhanhl@gmail.com",
-  );
-  TextEditingController passwordController = TextEditingController(
-    text: "password",
-  );
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   final auth = Get.find<AuthController>();
   SubmitLogin submitLogin = SubmitLogin();
   bool isObsecure = true;

@@ -1,39 +1,43 @@
 import 'package:get/get.dart';
-import 'package:travelyuk/app/routes/app_pages.dart';
-import 'package:travelyuk/app/widgets/menu_models.dart';
+import 'package:travelyuk/app/models/get_orders_model.dart';
+import 'package:travelyuk/app/modules/auth/controller/auth_controller.dart';
+import 'package:travelyuk/app/modules/orders/services/orders_service.dart';
+import 'package:travelyuk/app/modules/dashboard_user/controllers/dashboard_user_controller.dart';
 
 class OrdersController extends GetxController {
-  List<MenuModel>? orderHistory = [];
+  OrdersService service;
+  OrdersController(this.service);
+  GetOrders orders = GetOrders();
+  final dashboardC = Get.find<DashboardUserController>();
+  final auth = Get.find<AuthController>();
+  bool? isLoading;
+  bool? isSuccess;
 
-  @override
-  void onInit() {
-    super.onInit();
-    orderHistory = [
-      MenuModel(
-        from: "Jakarta",
-        to: "Semarang",
-        price: "100.000",
-        busName: "Sinar Jaya",
-        date: DateTime.now().toString(),
-        pax: "2",
-        onTap: () => Get.toNamed(Routes.ORDER_DETAIL),
-      ),
-      MenuModel(
-        from: "Surabaya",
-        to: "Bandung",
-        price: "150.000",
-        busName: "Sinar Mas",
-        date: DateTime.now().toString(),
-        pax: "3",
-        onTap: () => Get.toNamed(Routes.ORDER_DETAIL),
-      ),
-    ];
+  Future<void> getOrdersByUser() async {
+    isLoading = true;
+    isSuccess = true;
+    update();
+    await service.getOrdersByUser(auth.userInformation.id ?? 0).then(
+      (value) {
+        isSuccess = true;
+        isLoading = false;
+        orders = value;
+        update();
+      },
+    ).catchError(
+      (e) {
+        isSuccess = false;
+        isLoading = false;
+        update();
+      },
+    );
   }
 
-  // @override
-  // void onReady() {
-  //   super.onReady();
-  // }
+  @override
+  void onReady() {
+    super.onReady();
+    getOrdersByUser();
+  }
 
   // @override
   // void onClose() {

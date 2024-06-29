@@ -1,25 +1,27 @@
 import 'package:get/get.dart';
 
+import '../modules/SCHEDULE_RESULT/bindings/schedule_result_binding.dart';
+import '../modules/SCHEDULE_RESULT/views/schedule_result_view.dart';
 import '../modules/add_schedule_admin/bindings/add_schedule_admin_binding.dart';
 import '../modules/add_schedule_admin/views/add_schedule_admin_view.dart';
 import '../modules/bus_schedule_admin/bindings/bus_schedule_admin_binding.dart';
 import '../modules/bus_schedule_admin/views/bus_schedule_admin_view.dart';
-import '../modules/bus_schedule_user/bindings/bus_schedule_user_binding.dart';
-import '../modules/bus_schedule_user/views/bus_schedule_user_view.dart';
 import '../modules/dashboard_admin/bindings/dashboard_admin_binding.dart';
 import '../modules/dashboard_admin/views/dashboard_admin_view.dart';
 import '../modules/dashboard_user/bindings/dashboard_admin_binding.dart';
 import '../modules/dashboard_user/views/dashboard_user_view.dart';
-import '../modules/history/bindings/history_binding.dart';
-import '../modules/history/views/history_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
 import '../modules/order_admin/bindings/order_admin_binding.dart';
 import '../modules/order_admin/views/order_admin_view.dart';
+import '../modules/order_confirmation/bindings/order_confirmation_binding.dart';
+import '../modules/order_confirmation/views/order_confirmation_view.dart';
 import '../modules/order_detail/bindings/order_detail_binding.dart';
 import '../modules/order_detail/views/order_detail_view.dart';
+import '../modules/order_detail_admin/bindings/order_detail_admin_binding.dart';
+import '../modules/order_detail_admin/views/order_detail_admin_view.dart';
 import '../modules/orders/bindings/orders_binding.dart';
 import '../modules/orders/views/orders_view.dart';
 import '../modules/profile/bindings/profile_binding.dart';
@@ -65,11 +67,6 @@ class AppPages {
       binding: ProfileBinding(),
     ),
     GetPage(
-      name: _Paths.HISTORY,
-      page: () => const HistoryView(),
-      binding: HistoryBinding(),
-    ),
-    GetPage(
       name: _Paths.HOME,
       page: () => const HomeView(),
       binding: HomeBinding(),
@@ -83,11 +80,6 @@ class AppPages {
       name: _Paths.ORDER_DETAIL,
       page: () => const OrderDetailView(),
       binding: OrderDetailBinding(),
-    ),
-    GetPage(
-      name: _Paths.BUS_SCHEDULE_USER,
-      page: () => const BusScheduleUserView(),
-      binding: BusScheduleUserBinding(),
     ),
     GetPage(
       name: _Paths.BUS_SCHEDULE_ADMIN,
@@ -108,6 +100,21 @@ class AppPages {
       name: _Paths.DASHBOARD_ADMIN,
       page: () => const DashboardAdminView(),
       binding: DashboardAdminBinding(),
+    ),
+    GetPage(
+      name: _Paths.SCHEDULE_RESULT,
+      page: () => const ScheduleResultView(),
+      binding: ScheduleResultBinding(),
+    ),
+    GetPage(
+      name: _Paths.ORDER_CONFIRMATION,
+      page: () => const OrderConfirmationView(),
+      binding: OrderConfirmationBinding(),
+    ),
+    GetPage(
+      name: _Paths.ORDER_DETAIL_ADMIN,
+      page: () => const OrderDetailAdminView(),
+      binding: OrderDetailAdminBinding(),
     ),
   ];
 }

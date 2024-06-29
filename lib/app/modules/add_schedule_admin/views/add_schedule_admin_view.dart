@@ -31,7 +31,7 @@ class AddScheduleAdminView extends GetView<AddScheduleAdminController> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Text(
-                  "Jadwal",
+                  "Tambah Jadwal",
                   style: TextStyle(
                     fontSize: 18.sp,
                     fontWeight: FontWeight.bold,

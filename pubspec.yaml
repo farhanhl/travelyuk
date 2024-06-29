@@ -19,14 +19,19 @@ dependencies:
   date_field: ^5.2.1
   loading_animation_widget: ^1.2.1
   day_night_time_picker: ^1.3.1
-  smartrefresh: ^0.0.2
   flutter:
     sdk: flutter
 
 dev_dependencies:
   flutter_lints: ^3.0.0
+  flutter_launcher_icons: ^0.9.2
   flutter_test:
     sdk: flutter
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/bus.png"
 
 flutter:
   assets:

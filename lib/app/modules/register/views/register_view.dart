@@ -170,11 +170,18 @@ class RegisterView extends GetView<RegisterController> {
                             ),
                           ),
                           child: DropdownSearch<String>(
-                            popupProps: const PopupProps.modalBottomSheet(
+                            popupProps: PopupProps.modalBottomSheet(
                               showSelectedItems: true,
+                              modalBottomSheetProps: ModalBottomSheetProps(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(8.r),
+                                  ),
+                                ),
+                              ),
                             ),
                             items: const [
-                              "Laki-Laki",
+                              "Laki-laki",
                               "Perempuan",
                             ],
                             dropdownDecoratorProps:
@@ -185,7 +192,8 @@ class RegisterView extends GetView<RegisterController> {
                                 labelStyle: TextStyle(color: shadowColor),
                               ),
                             ),
-                            onChanged: print,
+                            onChanged: (value) =>
+                                controller.changeGender(value ?? ""),
                           ),
                         ),
                         SizedBox(
@@ -241,7 +249,15 @@ class RegisterView extends GetView<RegisterController> {
                                     primaryColor,
                                   ),
                                 ),
-                                onPressed: () => null,
+                                onPressed: () => controller.doRegister(
+                                    inputedEmail:
+                                        controller.emailController.text,
+                                    inputedGender: controller.gender ?? "",
+                                    inputedName: controller.nameController.text,
+                                    inputedPassword:
+                                        controller.passwordController.text,
+                                    inputedPhoneNumber:
+                                        controller.phoneNumberController.text),
                                 child: const Text(
                                   "Daftar",
                                   style: TextStyle(

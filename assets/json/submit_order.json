@@ -1,7 +1,6 @@
 {
     "user_id": 1,
     "schedule_id": 1,
-    "payment_status": "Paid",
     "pax": 5,
     "price": "500000"
 }
