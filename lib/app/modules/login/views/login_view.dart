@@ -158,7 +158,7 @@ class LoginView extends GetView<LoginController> {
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      FaIcon(
+                                      Icon(
                                         FontAwesomeIcons.user,
                                         color: lightColor,
                                         size: 16.sp,
@@ -195,7 +195,7 @@ class LoginView extends GetView<LoginController> {
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      FaIcon(
+                                      Icon(
                                         FontAwesomeIcons.userTie,
                                         color: lightColor,
                                         size: 16.sp,

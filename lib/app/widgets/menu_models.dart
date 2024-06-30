@@ -29,7 +29,7 @@ class Menu {
           children: [
             Row(
               children: [
-                const FaIcon(
+                const Icon(
                   FontAwesomeIcons.bus,
                   size: 16,
                   color: lightColor,
@@ -60,7 +60,7 @@ class Menu {
           children: [
             Row(
               children: [
-                const FaIcon(
+                const Icon(
                   FontAwesomeIcons.mapLocationDot,
                   size: 16,
                   color: lightColor,
@@ -78,7 +78,7 @@ class Menu {
                 SizedBox(
                   width: 5.w,
                 ),
-                const FaIcon(
+                const Icon(
                   FontAwesomeIcons.arrowRight,
                   size: 16,
                   color: lightColor,
@@ -100,7 +100,7 @@ class Menu {
                 SizedBox(
                   width: 3.w,
                 ),
-                const FaIcon(
+                const Icon(
                   FontAwesomeIcons.tag,
                   size: 16,
                   color: lightColor,
@@ -122,7 +122,7 @@ class Menu {
                 SizedBox(
                   width: 3.w,
                 ),
-                const FaIcon(
+                const Icon(
                   FontAwesomeIcons.clock,
                   size: 16,
                   color: lightColor,
@@ -162,7 +162,7 @@ class Menu {
           children: [
             Row(
               children: [
-                const FaIcon(
+                const Icon(
                   FontAwesomeIcons.bus,
                   size: 16,
                   color: lightColor,
@@ -193,7 +193,7 @@ class Menu {
           children: [
             Row(
               children: [
-                const FaIcon(
+                const Icon(
                   FontAwesomeIcons.mapLocationDot,
                   size: 16,
                   color: lightColor,
@@ -211,7 +211,7 @@ class Menu {
                 SizedBox(
                   width: 5.w,
                 ),
-                const FaIcon(
+                const Icon(
                   FontAwesomeIcons.arrowRight,
                   size: 16,
                   color: lightColor,
@@ -233,7 +233,7 @@ class Menu {
                 SizedBox(
                   width: 3.w,
                 ),
-                const FaIcon(
+                const Icon(
                   FontAwesomeIcons.tag,
                   size: 16,
                   color: lightColor,
@@ -255,7 +255,7 @@ class Menu {
                 SizedBox(
                   width: 3.w,
                 ),
-                const FaIcon(
+                const Icon(
                   FontAwesomeIcons.userLarge,
                   size: 16,
                   color: lightColor,

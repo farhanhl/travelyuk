@@ -43,15 +43,15 @@ class DashboardUserView extends GetView<DashboardUserController> {
             type: BottomNavigationBarType.fixed,
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
-                icon: FaIcon(FontAwesomeIcons.house),
+                icon: Icon(FontAwesomeIcons.house),
                 label: 'Beranda',
               ),
               BottomNavigationBarItem(
-                icon: FaIcon(FontAwesomeIcons.list),
+                icon: Icon(FontAwesomeIcons.list),
                 label: 'Pesanan',
               ),
               BottomNavigationBarItem(
-                icon: FaIcon(FontAwesomeIcons.person),
+                icon: Icon(FontAwesomeIcons.person),
                 label: 'Akun',
               ),
             ],

@@ -58,6 +58,12 @@ class RegisterController extends GetxController {
         isSuccess: false,
         backButton: () => Get.back(),
       );
+    } else if (inputedPassword.length < 6) {
+      CustomNotification.show(
+        message: "Password tidak boleh kurang dari 6 karakter",
+        isSuccess: false,
+        backButton: () => Get.back(),
+      );
     } else {
       EasyLoading.show(
         status: 'loading...',

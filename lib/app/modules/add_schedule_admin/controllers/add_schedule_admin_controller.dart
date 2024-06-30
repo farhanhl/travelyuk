@@ -66,10 +66,10 @@ class AddScheduleAdminController extends GetxController {
     update();
   }
 
-  void changeTime(Time time) {
-    String cleanTime =
-        time.toString().replaceAll('TimeOfDay(', '').replaceAll(')', '');
-    departureTimeController.text = cleanTime;
+  void changeTime(TimeOfDay time) {
+    String formattedTime =
+        '${time.hour.toString().padLeft(2, '0')}:${time.minute.toString().padLeft(2, '0')}';
+    departureTimeController.text = formattedTime;
     update();
   }
 

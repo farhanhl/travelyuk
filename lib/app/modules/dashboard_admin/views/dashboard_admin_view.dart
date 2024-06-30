@@ -44,11 +44,11 @@ class DashboardAdminView extends GetView<DashboardAdminController> {
             type: BottomNavigationBarType.fixed,
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
-                icon: FaIcon(FontAwesomeIcons.list),
+                icon: Icon(FontAwesomeIcons.list),
                 label: 'Daftar Pesanan',
               ),
               BottomNavigationBarItem(
-                icon: FaIcon(FontAwesomeIcons.list),
+                icon: Icon(FontAwesomeIcons.list),
                 label: 'Daftar Jadwal',
               ),
             ],
