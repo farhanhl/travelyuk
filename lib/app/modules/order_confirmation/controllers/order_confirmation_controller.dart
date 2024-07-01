@@ -18,6 +18,7 @@ class OrderConfirmationController extends GetxController {
   final orderC = Get.find<OrdersController>();
   int price = 0;
   int total = 0;
+  bool isOneWay = false;
   TextEditingController nameController = TextEditingController();
   TextEditingController paxController = TextEditingController(text: "0");
   SubmitOrder submitOrder = SubmitOrder();
@@ -61,6 +62,7 @@ class OrderConfirmationController extends GetxController {
       scheduleId: schedule.id,
       pax: pax,
       price: price,
+      isOneWay: isOneWay,
     );
     await service.addOrder(submitOrder).then(
       (value) {
@@ -89,6 +91,24 @@ class OrderConfirmationController extends GetxController {
       },
     );
     update();
+  }
+
+  void changeIsOneWay(bool? inputedIsOneWay) {
+    isOneWay = inputedIsOneWay ?? false;
+    if (isOneWay) {
+      price = price * 2;
+    }
+    update();
+  }
+
+  String countTotal() {
+    int countedTotal = price * int.parse(paxController.text);
+    if (isOneWay) {
+      countedTotal * 2;
+      return "$countedTotal";
+    } else {
+      return "$countedTotal";
+    }
   }
 
   // @override

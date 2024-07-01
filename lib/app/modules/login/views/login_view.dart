@@ -231,8 +231,9 @@ class LoginView extends GetView<LoginController> {
                                   ),
                                 ),
                                 onPressed: () => controller.doLogin(
-                                  email: controller.emailController.text,
-                                  password: controller.passwordController.text,
+                                  inputedEmail: controller.emailController.text,
+                                  inputedPassword:
+                                      controller.passwordController.text,
                                 ),
                                 child: const Text(
                                   "Masuk",

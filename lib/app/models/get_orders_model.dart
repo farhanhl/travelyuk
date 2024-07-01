@@ -31,6 +31,7 @@ class Order {
   bool? isPaymentAccepted;
   bool? isRefund;
   bool? isRefundAccepted;
+  bool? isOneWay;
   String? createdAt;
   String? updatedAt;
   User? user;
@@ -46,6 +47,7 @@ class Order {
       this.isPaymentAccepted,
       this.isRefund,
       this.isRefundAccepted,
+      this.isOneWay,
       this.createdAt,
       this.updatedAt,
       this.user,
@@ -61,6 +63,7 @@ class Order {
     isPaymentAccepted = json['is_payment_accepted'];
     isRefund = json['is_refund'];
     isRefundAccepted = json['is_refund_accepted'];
+    isOneWay = json['is_one_way'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
     user = json['user'] != null ? User?.fromJson(json['user']) : null;
@@ -79,6 +82,7 @@ class Order {
     data['is_payment_accepted'] = isPaymentAccepted;
     data['is_refund'] = isRefund;
     data['is_refund_accepted'] = isRefundAccepted;
+    data['is_one_way'] = isOneWay;
     data['created_at'] = createdAt;
     data['updated_at'] = updatedAt;
     if (user != null) {

@@ -370,8 +370,27 @@ class OrderConfirmationView extends GetView<OrderConfirmationController> {
                 SizedBox(
                   height: 10.h,
                 ),
+                Row(
+                  children: [
+                    Checkbox(
+                      activeColor: primaryColor,
+                      value: controller.isOneWay,
+                      onChanged: (value) {
+                        controller.changeIsOneWay(value!);
+                      },
+                      visualDensity: VisualDensity.compact,
+                    ),
+                    Text(
+                      "Pulang Pergi",
+                      style: TextStyle(fontSize: 14.sp),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 10.h,
+                ),
                 Text(
-                  "Harga: ${formatCurrency(controller.total.toString())}",
+                  "Harga: ${formatCurrency(controller.countTotal())}",
                   style: TextStyle(
                     fontSize: 16.sp,
                     fontWeight: FontWeight.bold,
@@ -386,7 +405,7 @@ class OrderConfirmationView extends GetView<OrderConfirmationController> {
                       child: ElevatedButton(
                         onPressed: () => controller.doSubmitOrder(
                           pax: int.parse(controller.paxController.text),
-                          price: controller.total.toString(),
+                          price: controller.countTotal(),
                         ),
                         style: ButtonStyle(
                           backgroundColor: WidgetStateProperty.all<Color?>(

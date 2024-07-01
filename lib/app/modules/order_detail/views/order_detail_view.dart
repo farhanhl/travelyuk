@@ -232,6 +232,32 @@ class OrderDetailView extends GetView<OrderDetailController> {
                               text: TextSpan(
                                 children: [
                                   TextSpan(
+                                    text: "Tipe pesanan: ",
+                                    style: TextStyle(
+                                      fontSize: 14.sp,
+                                      fontWeight: FontWeight.bold,
+                                      color: darkColor,
+                                    ),
+                                  ),
+                                  TextSpan(
+                                    text: getIsOneWay(
+                                        controller.order.isOneWay ?? false),
+                                    style: TextStyle(
+                                      fontSize: 14.sp,
+                                      color: darkColor,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              textAlign: TextAlign.left,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            SizedBox(height: 5.h),
+                            RichText(
+                              text: TextSpan(
+                                children: [
+                                  TextSpan(
                                     text: "Total Penumpang: ",
                                     style: TextStyle(
                                       fontSize: 14.sp,

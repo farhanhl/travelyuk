@@ -109,3 +109,11 @@ bool isRefundable({
     }
   }
 }
+
+String getIsOneWay(bool isOneWay) {
+  if (isOneWay) {
+    return "Pulang & Pergi";
+  } else {
+    return "Berangkat";
+  }
+}

@@ -242,7 +242,29 @@ class Menu {
                   width: 12.w,
                 ),
                 Text(
-                  "Rp. ${order?.price}",
+                  formatCurrency(order?.price ?? ""),
+                  style: TextStyle(
+                    fontSize: 14.sp,
+                    color: lightColor,
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                SizedBox(
+                  width: 3.w,
+                ),
+                const Icon(
+                  FontAwesomeIcons.signsPost,
+                  size: 16,
+                  color: lightColor,
+                ),
+                SizedBox(
+                  width: 12.w,
+                ),
+                Text(
+                  getIsOneWay(order?.isOneWay ?? false),
                   style: TextStyle(
                     fontSize: 14.sp,
                     color: lightColor,
@@ -264,7 +286,7 @@ class Menu {
                   width: 12.w,
                 ),
                 Text(
-                  "${order?.pax}",
+                  "${order?.pax} ",
                   style: TextStyle(
                     fontSize: 14.sp,
                     color: lightColor,

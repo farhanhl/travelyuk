@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:flutter/widgets.dart';
 import 'package:travelyuk/app/routes/app_pages.dart';
+import 'package:travelyuk/app/utils/app_func.dart';
 import 'package:travelyuk/app/widgets/notification.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:travelyuk/app/models/submit_login_model.dart';
@@ -28,12 +29,18 @@ class LoginController extends GetxController {
   }
 
   void doLogin({
-    String? email,
-    String? password,
+    String? inputedEmail,
+    String? inputedPassword,
   }) async {
-    if (email!.isEmpty || password!.isEmpty) {
+    if (inputedEmail!.isEmpty || inputedPassword!.isEmpty) {
       CustomNotification.show(
         message: "Email atau Password Belum Diisi",
+        isSuccess: false,
+        backButton: () => Get.back(),
+      );
+    } else if (isValidEmail(inputedEmail) == false) {
+      CustomNotification.show(
+        message: "Harap masukkan email yang valid",
         isSuccess: false,
         backButton: () => Get.back(),
       );
@@ -45,8 +52,8 @@ class LoginController extends GetxController {
       );
       FocusManager.instance.primaryFocus?.unfocus();
       submitLogin = SubmitLogin(
-        email: email,
-        password: password,
+        email: inputedEmail,
+        password: inputedPassword,
         isAdmin: isAdmin,
       );
       await service.login(submitLogin).then(

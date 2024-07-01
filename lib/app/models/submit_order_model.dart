@@ -3,14 +3,22 @@ class SubmitOrder {
   int? scheduleId;
   int? pax;
   String? price;
+  bool? isOneWay;
 
-  SubmitOrder({this.userId, this.scheduleId, this.pax, this.price});
+  SubmitOrder({
+    this.userId,
+    this.scheduleId,
+    this.pax,
+    this.price,
+    this.isOneWay,
+  });
 
   SubmitOrder.fromJson(Map<String, dynamic> json) {
     userId = json['user_id'];
     scheduleId = json['schedule_id'];
     pax = json['pax'];
     price = json['price'];
+    isOneWay = json['is_one_way'];
   }
 
   Map<String, dynamic> toJson() {
@@ -19,6 +27,7 @@ class SubmitOrder {
     data['schedule_id'] = scheduleId;
     data['pax'] = pax;
     data['price'] = price;
+    data['is_one_way'] = isOneWay;
     return data;
   }
 }
