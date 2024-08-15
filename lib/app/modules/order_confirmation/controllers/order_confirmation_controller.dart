@@ -15,6 +15,7 @@ class OrderConfirmationController extends GetxController {
   OrderConfirmationService service;
   OrderConfirmationController(this.service);
   final dashboardC = Get.find<DashboardUserController>();
+  final ScrollController seatController = ScrollController();
   final orderC = Get.find<OrdersController>();
   int price = 0;
   int total = 0;

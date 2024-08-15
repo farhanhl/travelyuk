@@ -8,6 +8,7 @@ import 'package:travelyuk/app/models/get_cities_model.dart';
 import 'package:travelyuk/app/modules/home/services/home_service.dart';
 import 'package:travelyuk/app/theme/app_theme.dart';
 import 'package:travelyuk/app/utils/app_const.dart';
+import 'package:travelyuk/app/widgets/menu_models.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -251,6 +252,19 @@ class HomeView extends GetView<HomeController> {
                       ),
                     ],
                   ),
+                ),
+                GridView.builder(
+                  scrollDirection: Axis.vertical,
+                  controller: ScrollController(),
+                  shrinkWrap: true,
+                  itemCount: 40,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisSpacing: 10.w,
+                    mainAxisSpacing: 10.h,
+                    childAspectRatio: Get.width / Get.height.h * 3.5.h,
+                    crossAxisCount: 4,
+                  ),
+                  itemBuilder: (context, index) => Menu.seat(index),
                 ),
               ],
             ),

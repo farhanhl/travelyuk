@@ -299,6 +299,24 @@ class Menu {
       ),
     );
   }
+
+  static seat(int index) {
+    return GestureDetector(
+      // onTap: () => ,
+      child: Container(
+        decoration: BoxDecoration(
+          color: primaryColor,
+          borderRadius: BorderRadius.circular(8.r),
+        ),
+        child: Center(
+          child: Text(
+            "${index + 1}",
+            style: const TextStyle(color: lightColor),
+          ),
+        ),
+      ),
+    );
+  }
 }
 
 class MenuModel {

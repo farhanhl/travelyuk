@@ -1,12 +1,12 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:flutter/material.dart';
 import 'package:travelyuk/app/core/api/api.dart';
-import 'package:travelyuk/app/modules/order_detail/services/order_detail_service.dart';
-import 'package:travelyuk/app/theme/app_theme.dart';
 import 'package:travelyuk/app/utils/app_func.dart';
-import 'package:travelyuk/app/widgets/custom_widgets.dart';
+import 'package:travelyuk/app/theme/app_theme.dart';
 import '../controllers/order_detail_controller.dart';
+import 'package:travelyuk/app/widgets/custom_widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:travelyuk/app/modules/order_detail/services/order_detail_service.dart';
 
 class OrderDetailView extends GetView<OrderDetailController> {
   const OrderDetailView({super.key});

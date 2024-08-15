@@ -8,6 +8,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:travelyuk/app/modules/order_confirmation/controllers/order_confirmation_controller.dart';
 import 'package:travelyuk/app/utils/app_func.dart';
 import 'package:travelyuk/app/widgets/custom_widgets.dart';
+import 'package:travelyuk/app/widgets/menu_models.dart';
 
 class OrderConfirmationView extends GetView<OrderConfirmationController> {
   const OrderConfirmationView({super.key});
@@ -395,6 +396,22 @@ class OrderConfirmationView extends GetView<OrderConfirmationController> {
                     fontSize: 16.sp,
                     fontWeight: FontWeight.bold,
                   ),
+                ),
+                SizedBox(
+                  height: 10.h,
+                ),
+                GridView.builder(
+                  scrollDirection: Axis.vertical,
+                  controller: controller.seatController,
+                  shrinkWrap: true,
+                  itemCount: 40,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisSpacing: 10.w,
+                    mainAxisSpacing: 10.h,
+                    childAspectRatio: Get.width / Get.height.h * 3.5.h,
+                    crossAxisCount: 1,
+                  ),
+                  itemBuilder: (context, index) => Menu.seat(index),
                 ),
                 SizedBox(
                   height: 10.h,
