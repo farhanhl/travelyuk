@@ -5,7 +5,8 @@ import 'package:travelyuk/app/models/submit_register_model.dart';
 import 'package:travelyuk/app/models/submit_schedule_model.dart';
 import 'package:travelyuk/app/models/submit_search_schedule_model.dart';
 
-const baseUrl = 'https://harapanjaya.xyz/api';
+// const baseUrl = 'https://harapanjaya.xyz/api';
+const baseUrl = 'http://10.0.2.2:8000/api';
 
 class Api {
   final Dio dio = Dio(
@@ -61,5 +62,13 @@ class Api {
 
   Future<Response> addOrder(SubmitOrder submitOrder) {
     return dio.post("/add_order", data: submitOrder);
+  }
+
+  Future<Response> upload(file, id) async {
+    final formData = FormData.fromMap({
+      'transfer': await MultipartFile.fromFile(file, filename: file),
+    });
+
+    return dio.post("/payment_proof/$id", data: formData);
   }
 }

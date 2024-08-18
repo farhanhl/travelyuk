@@ -299,7 +299,7 @@ class OrderDetailAdminView extends GetView<OrderDetailAdminController> {
                               onPressed: () =>
                                   controller.changeIsPaid("is_refund_accepted"),
                               child: const Text(
-                                "Ajukan pengembalian dana",
+                                "Terima pengembalian dana",
                                 style: TextStyle(
                                   color: lightColor,
                                 ),

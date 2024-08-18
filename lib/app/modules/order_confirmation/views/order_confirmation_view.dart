@@ -216,7 +216,10 @@ class OrderConfirmationView extends GetView<OrderConfirmationController> {
                 ),
                 Text(
                   "Nama",
-                  style: TextStyle(fontSize: 14.sp),
+                  style: TextStyle(
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 SizedBox(
                   height: 5.h,
@@ -267,7 +270,10 @@ class OrderConfirmationView extends GetView<OrderConfirmationController> {
                 ),
                 Text(
                   "Jumlah Kursi",
-                  style: TextStyle(fontSize: 14.sp),
+                  style: TextStyle(
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 SizedBox(
                   height: 5.h,
@@ -322,29 +328,29 @@ class OrderConfirmationView extends GetView<OrderConfirmationController> {
                       SizedBox(
                         width: 5.w,
                       ),
-                      SizedBox(
-                        height: Get.height.h,
-                        child: ElevatedButton(
-                          onPressed: () => controller.setPax(false),
-                          style: ButtonStyle(
-                            backgroundColor:
-                                WidgetStateProperty.all<Color?>(primaryColor),
-                            shape:
-                                WidgetStateProperty.all<RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8.r),
-                              ),
-                            ),
-                          ),
-                          child: const Text(
-                            "-",
-                            style: TextStyle(color: lightColor),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 5.w,
-                      ),
+                      // SizedBox(
+                      //   height: Get.height.h,
+                      //   child: ElevatedButton(
+                      //     onPressed: () => controller.setPax(false),
+                      //     style: ButtonStyle(
+                      //       backgroundColor:
+                      //           WidgetStateProperty.all<Color?>(primaryColor),
+                      //       shape:
+                      //           WidgetStateProperty.all<RoundedRectangleBorder>(
+                      //         RoundedRectangleBorder(
+                      //           borderRadius: BorderRadius.circular(8.r),
+                      //         ),
+                      //       ),
+                      //     ),
+                      //     child: const Text(
+                      //       "-",
+                      //       style: TextStyle(color: lightColor),
+                      //     ),
+                      //   ),
+                      // ),
+                      // SizedBox(
+                      //   width: 5.w,
+                      // ),
                       SizedBox(
                         height: Get.height.h,
                         child: ElevatedButton(
@@ -366,6 +372,39 @@ class OrderConfirmationView extends GetView<OrderConfirmationController> {
                         ),
                       )
                     ],
+                  ),
+                ),
+                SizedBox(
+                  height: 10.h,
+                ),
+                Text(
+                  "Pilih Kursi",
+                  style: TextStyle(
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(
+                  height: 10.h,
+                ),
+                GridView.builder(
+                  scrollDirection: Axis.vertical,
+                  controller: ScrollController(),
+                  shrinkWrap: true,
+                  itemCount: 20,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisSpacing: 10.w,
+                    mainAxisSpacing: 10.h,
+                    childAspectRatio: Get.width / Get.height.h * 3.5.h,
+                    crossAxisCount: 4,
+                  ),
+                  itemBuilder: (context, index) => Menu.seat(
+                    index,
+                    controller.schedule.seat,
+                    controller.updateSeatState,
+                    int.parse(controller.paxController.text),
+                    controller.selectedPax,
+                    controller.selectedSeats,
                   ),
                 ),
                 SizedBox(
@@ -396,22 +435,6 @@ class OrderConfirmationView extends GetView<OrderConfirmationController> {
                     fontSize: 16.sp,
                     fontWeight: FontWeight.bold,
                   ),
-                ),
-                SizedBox(
-                  height: 10.h,
-                ),
-                GridView.builder(
-                  scrollDirection: Axis.vertical,
-                  controller: controller.seatController,
-                  shrinkWrap: true,
-                  itemCount: 40,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisSpacing: 10.w,
-                    mainAxisSpacing: 10.h,
-                    childAspectRatio: Get.width / Get.height.h * 3.5.h,
-                    crossAxisCount: 1,
-                  ),
-                  itemBuilder: (context, index) => Menu.seat(index),
                 ),
                 SizedBox(
                   height: 10.h,

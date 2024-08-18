@@ -300,18 +300,78 @@ class Menu {
     );
   }
 
-  static seat(int index) {
+  static seat(
+    int index,
+    Seat? seat,
+    Function(int index, bool newValue)? onSeatTap,
+    int totalSeat,
+    int selectedPax,
+    List<int> selectedSeats,
+  ) {
+    List<bool?> seatProperties = [
+      seat?.seat1,
+      seat?.seat2,
+      seat?.seat3,
+      seat?.seat4,
+      seat?.seat5,
+      seat?.seat6,
+      seat?.seat7,
+      seat?.seat8,
+      seat?.seat9,
+      seat?.seat10,
+      seat?.seat11,
+      seat?.seat12,
+      seat?.seat13,
+      seat?.seat14,
+      seat?.seat15,
+      seat?.seat16,
+      seat?.seat17,
+      seat?.seat18,
+      seat?.seat19,
+      seat?.seat20,
+    ];
+    late bool newValue;
     return GestureDetector(
-      // onTap: () => ,
+      onTap: () {
+        if (selectedSeats.contains(index)) {
+          return;
+        }
+        if (totalSeat == 0) {
+          Get.snackbar(
+            "Pesan",
+            "Harap tentukan jumlah kursi",
+            backgroundColor: errorColor,
+            colorText: lightColor,
+          );
+        } else if (seatProperties[index] == false && totalSeat > selectedPax) {
+          newValue = !(seatProperties[index]!);
+          onSeatTap?.call(index, newValue);
+        } else if (seatProperties[index] == true && totalSeat <= selectedPax) {
+          newValue = !(seatProperties[index]!);
+          onSeatTap?.call(index, newValue);
+        } else {
+          Get.snackbar(
+            "Pesan",
+            "Jumlah kursi dan Pilihan kursi harus sesuai",
+            backgroundColor: errorColor,
+            colorText: lightColor,
+          );
+        }
+      },
       child: Container(
         decoration: BoxDecoration(
-          color: primaryColor,
+          color:
+              (seatProperties.length > index && seatProperties[index] == true)
+                  ? shadowColor
+                  : primaryColor,
           borderRadius: BorderRadius.circular(8.r),
         ),
         child: Center(
           child: Text(
             "${index + 1}",
-            style: const TextStyle(color: lightColor),
+            style: const TextStyle(
+              color: lightColor,
+            ),
           ),
         ),
       ),

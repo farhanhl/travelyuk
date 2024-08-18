@@ -1,0 +1,27 @@
+{
+    "seat": {
+        "id": 6,
+        "seat_1": false,
+        "seat_2": false,
+        "seat_3": false,
+        "seat_4": false,
+        "seat_5": false,
+        "seat_6": false,
+        "seat_7": false,
+        "seat_8": false,
+        "seat_9": false,
+        "seat_10": false,
+        "seat_11": false,
+        "seat_12": false,
+        "seat_13": false,
+        "seat_14": false,
+        "seat_15": false,
+        "seat_16": false,
+        "seat_17": false,
+        "seat_18": false,
+        "seat_19": false,
+        "seat_20": false,
+        "created_at": "2024-08-15T06:41:05.000000Z",
+        "updated_at": "2024-08-15T06:41:05.000000Z"
+    }
+}

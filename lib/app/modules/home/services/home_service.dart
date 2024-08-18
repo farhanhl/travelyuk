@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:travelyuk/app/core/api/api.dart';
 import 'package:travelyuk/app/models/error_model.dart';

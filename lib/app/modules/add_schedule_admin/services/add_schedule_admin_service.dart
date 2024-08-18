@@ -1,11 +1,10 @@
 import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:travelyuk/app/core/api/api.dart';
+import 'package:travelyuk/app/utils/app_const.dart';
 import 'package:travelyuk/app/models/error_model.dart';
 import 'package:travelyuk/app/models/get_cities_model.dart';
 import 'package:travelyuk/app/models/submit_schedule_model.dart';
-import 'package:travelyuk/app/utils/app_const.dart';
 
 class AddScheduleAdminService {
   Api api;
