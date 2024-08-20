@@ -1,16 +1,14 @@
 // ignore_for_file: unused_local_variable
-
 import 'dart:io';
-
-import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:travelyuk/app/theme/app_theme.dart';
 import 'package:travelyuk/app/models/get_orders_model.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:travelyuk/app/modules/orders/controllers/orders_controller.dart';
 import 'package:travelyuk/app/modules/order_detail/services/order_detail_service.dart';
-import 'package:travelyuk/app/theme/app_theme.dart';
 
 class OrderDetailController extends GetxController {
   bool isLoading = false;
@@ -81,14 +79,15 @@ class OrderDetailController extends GetxController {
         final File compressedImageFile = File(compressedImagePath);
         imagePath.value = compressedImageFile.path;
         await service.upload(imagePath.value, order.id).then((value) {
-          update();
           Get.back();
+          order.transfer = value.path;
           Get.snackbar(
-            "Error",
+            "Berhasil",
             "Berhasil upload bukti transfer",
             backgroundColor: successColor,
             colorText: lightColor,
           );
+          update();
         }).catchError(
           (e) {
             Get.snackbar(

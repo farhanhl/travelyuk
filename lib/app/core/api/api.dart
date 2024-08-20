@@ -5,8 +5,8 @@ import 'package:travelyuk/app/models/submit_register_model.dart';
 import 'package:travelyuk/app/models/submit_schedule_model.dart';
 import 'package:travelyuk/app/models/submit_search_schedule_model.dart';
 
-// const baseUrl = 'https://harapanjaya.xyz/api';
-const baseUrl = 'http://10.0.2.2:8000/api';
+const baseUrl = 'https://harapanjaya.xyz/api';
+// const baseUrl = 'http://10.0.2.2:8000/api';
 
 class Api {
   final Dio dio = Dio(

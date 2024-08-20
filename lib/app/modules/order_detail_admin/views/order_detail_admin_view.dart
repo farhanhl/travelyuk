@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:insta_image_viewer/insta_image_viewer.dart';
 import 'package:travelyuk/app/core/api/api.dart';
 import 'package:travelyuk/app/modules/order_detail_admin/controllers/order_detail_admin_controller.dart';
 import 'package:travelyuk/app/modules/order_detail_admin/services/order_detail_admin_service.dart';
@@ -258,6 +259,25 @@ class OrderDetailAdminView extends GetView<OrderDetailAdminController> {
                       SizedBox(
                         height: 10.h,
                       ),
+                      controller.order.transfer != null &&
+                              controller.order.transfer != ""
+                          ? SizedBox(
+                              child: Column(
+                                children: [
+                                  InstaImageViewer(
+                                    child: Image.network(
+                                      "${controller.order.transfer}",
+                                      height: 200.h,
+                                      width: 200.w,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 10.h,
+                                  ),
+                                ],
+                              ),
+                            )
+                          : const SizedBox.shrink(),
                       (controller.order.isPaid ?? true) == true &&
                               (controller.order.isPaymentAccepted ?? false) ==
                                   false

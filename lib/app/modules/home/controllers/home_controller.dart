@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:travelyuk/app/models/get_cities_model.dart';
@@ -90,6 +93,7 @@ class HomeController extends GetxController {
         destinationCityId: inputedDestinationCityId,
         date: inputedDate,
       );
+      log(jsonEncode(submitSearchSchedule));
       await service.searchSchedule(submitSearchSchedule).then(
         (value) {
           EasyLoading.dismiss();

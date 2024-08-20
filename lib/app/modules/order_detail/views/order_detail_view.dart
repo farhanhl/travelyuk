@@ -1,4 +1,3 @@
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -7,7 +6,9 @@ import 'package:travelyuk/app/utils/app_func.dart';
 import 'package:travelyuk/app/theme/app_theme.dart';
 import '../controllers/order_detail_controller.dart';
 import 'package:travelyuk/app/widgets/custom_widgets.dart';
+import 'package:insta_image_viewer/insta_image_viewer.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:travelyuk/app/modules/order_detail/services/order_detail_service.dart';
 
 class OrderDetailView extends GetView<OrderDetailController> {
@@ -288,180 +289,14 @@ class OrderDetailView extends GetView<OrderDetailController> {
                       ),
                       (controller.order.isPaid ?? false)
                           ? const SizedBox.shrink()
-                          : Container(
-                              width: 40.w,
-                              height: 40.h,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10.r),
-                                border: Border.all(
-                                  width: 1.w,
-                                ),
-                              ),
-                              child: IconButton(
-                                icon: const Icon(
-                                  FontAwesomeIcons.circlePlus,
-                                  color: primaryColor,
-                                  size: 20,
-                                ),
-                                onPressed: () {
-                                  Get.defaultDialog(
-                                    title: 'Select Image Source',
-                                    content: Column(
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                            left: 10,
-                                            right: 10,
-                                          ),
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceEvenly,
-                                            children: [
-                                              Expanded(
-                                                child: ElevatedButton(
-                                                  onPressed: () {
-                                                    controller.uploadImage(
-                                                      ImageSource.gallery,
-                                                    );
-                                                  },
-                                                  style:
-                                                      ElevatedButton.styleFrom(
-                                                    backgroundColor:
-                                                        primaryColor,
-                                                    shape:
-                                                        RoundedRectangleBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              12.r),
-                                                    ),
-                                                  ),
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsets.symmetric(
-                                                      vertical: 8.h,
-                                                    ),
-                                                    child: Column(
-                                                      children: [
-                                                        const Icon(
-                                                          FontAwesomeIcons
-                                                              .image,
-                                                          color: lightColor,
-                                                          size: 50,
-                                                        ),
-                                                        Padding(
-                                                          padding: EdgeInsets
-                                                              .symmetric(
-                                                            vertical: 4.h,
-                                                          ),
-                                                          child: const Text(
-                                                            "Gallery",
-                                                            style: TextStyle(
-                                                                color:
-                                                                    lightColor),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                              const SizedBox(
-                                                width: 20,
-                                              ),
-                                              Expanded(
-                                                child: ElevatedButton(
-                                                  onPressed: () {
-                                                    controller.uploadImage(
-                                                      ImageSource.camera,
-                                                    );
-                                                  },
-                                                  style:
-                                                      ElevatedButton.styleFrom(
-                                                    backgroundColor:
-                                                        primaryColor,
-                                                    shape:
-                                                        RoundedRectangleBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              12.r),
-                                                    ),
-                                                  ),
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsets.symmetric(
-                                                      vertical: 8.h,
-                                                    ),
-                                                    child: Column(
-                                                      children: [
-                                                        const Icon(
-                                                          FontAwesomeIcons
-                                                              .camera,
-                                                          color: lightColor,
-                                                          size: 50,
-                                                        ),
-                                                        Padding(
-                                                          padding: EdgeInsets
-                                                              .symmetric(
-                                                            vertical: 4.h,
-                                                          ),
-                                                          child: const Text(
-                                                            "Camera",
-                                                            style: TextStyle(
-                                                                color:
-                                                                    lightColor),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        SizedBox(height: 5.h),
-                                        Row(
-                                          children: [
-                                            Expanded(
-                                              child: ElevatedButton(
-                                                style: ElevatedButton.styleFrom(
-                                                  backgroundColor: primaryColor,
-                                                  shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            12.r),
-                                                  ),
-                                                ),
-                                                onPressed: () {
-                                                  Get.back();
-                                                },
-                                                child: const Text(
-                                                  "Cancel",
-                                                  style: TextStyle(
-                                                      color: lightColor),
-                                                ),
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  );
-                                },
-                              ),
-                            ),
-                      SizedBox(
-                        height: 10.h,
-                      ),
-                      (controller.order.isPaid ?? false)
-                          ? const SizedBox.shrink()
                           : SizedBox(
                               child: Column(
                                 children: [
                                   CustomWidget.paymentInformation(
-                                      controller.order.price ?? ""),
+                                    controller.order.price ?? "",
+                                  ),
                                   SizedBox(
-                                    height: 10.h,
+                                    height: 5.h,
                                   ),
                                   ElevatedButton(
                                     style: ButtonStyle(
@@ -470,10 +305,159 @@ class OrderDetailView extends GetView<OrderDetailController> {
                                         primaryColor,
                                       ),
                                     ),
-                                    onPressed: () =>
-                                        controller.changeIsPaid("is_paid"),
+                                    onPressed: () {
+                                      Get.defaultDialog(
+                                        title: 'Select Image Source',
+                                        content: Column(
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                left: 10,
+                                                right: 10,
+                                              ),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceEvenly,
+                                                children: [
+                                                  Expanded(
+                                                    child: ElevatedButton(
+                                                      onPressed: () {
+                                                        controller.uploadImage(
+                                                          ImageSource.gallery,
+                                                        );
+                                                      },
+                                                      style: ElevatedButton
+                                                          .styleFrom(
+                                                        backgroundColor:
+                                                            primaryColor,
+                                                        shape:
+                                                            RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      12.r),
+                                                        ),
+                                                      ),
+                                                      child: Padding(
+                                                        padding: EdgeInsets
+                                                            .symmetric(
+                                                          vertical: 8.h,
+                                                        ),
+                                                        child: Column(
+                                                          children: [
+                                                            const Icon(
+                                                              FontAwesomeIcons
+                                                                  .image,
+                                                              color: lightColor,
+                                                              size: 50,
+                                                            ),
+                                                            Padding(
+                                                              padding: EdgeInsets
+                                                                  .symmetric(
+                                                                vertical: 4.h,
+                                                              ),
+                                                              child: const Text(
+                                                                "Gallery",
+                                                                style: TextStyle(
+                                                                    color:
+                                                                        lightColor),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  const SizedBox(
+                                                    width: 20,
+                                                  ),
+                                                  Expanded(
+                                                    child: ElevatedButton(
+                                                      onPressed: () {
+                                                        controller.uploadImage(
+                                                          ImageSource.camera,
+                                                        );
+                                                      },
+                                                      style: ElevatedButton
+                                                          .styleFrom(
+                                                        backgroundColor:
+                                                            primaryColor,
+                                                        shape:
+                                                            RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      12.r),
+                                                        ),
+                                                      ),
+                                                      child: Padding(
+                                                        padding: EdgeInsets
+                                                            .symmetric(
+                                                          vertical: 8.h,
+                                                        ),
+                                                        child: Column(
+                                                          children: [
+                                                            const Icon(
+                                                              FontAwesomeIcons
+                                                                  .camera,
+                                                              color: lightColor,
+                                                              size: 50,
+                                                            ),
+                                                            Padding(
+                                                              padding: EdgeInsets
+                                                                  .symmetric(
+                                                                vertical: 4.h,
+                                                              ),
+                                                              child: const Text(
+                                                                "Camera",
+                                                                style: TextStyle(
+                                                                    color:
+                                                                        lightColor),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            SizedBox(height: 5.h),
+                                            Row(
+                                              children: [
+                                                Expanded(
+                                                  child: ElevatedButton(
+                                                    style: ElevatedButton
+                                                        .styleFrom(
+                                                      backgroundColor:
+                                                          primaryColor,
+                                                      shape:
+                                                          RoundedRectangleBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(12.r),
+                                                      ),
+                                                    ),
+                                                    onPressed: () {
+                                                      Get.back();
+                                                    },
+                                                    child: const Text(
+                                                      "Cancel",
+                                                      style: TextStyle(
+                                                          color: lightColor),
+                                                    ),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    },
                                     child: const Text(
-                                      "Saya sudah membayar",
+                                      "Unggah bukti pembayaran",
                                       style: TextStyle(
                                         color: lightColor,
                                       ),
@@ -482,6 +466,48 @@ class OrderDetailView extends GetView<OrderDetailController> {
                                 ],
                               ),
                             ),
+                      controller.order.transfer != null &&
+                              controller.order.transfer != ""
+                          ? SizedBox(
+                              child: Column(
+                                children: [
+                                  InstaImageViewer(
+                                    child: Image.network(
+                                      "${controller.order.transfer}",
+                                      height: 200.h,
+                                      width: 200.w,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 10.h,
+                                  ),
+                                ],
+                              ),
+                            )
+                          : const SizedBox.shrink(),
+                      (controller.order.isPaid == false) &&
+                              controller.order.transfer != null &&
+                              controller.order.transfer != ""
+                          ? ElevatedButton(
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    WidgetStateProperty.all<Color?>(
+                                  primaryColor,
+                                ),
+                              ),
+                              onPressed: () =>
+                                  controller.changeIsPaid("is_paid"),
+                              child: const Text(
+                                "Saya sudah membayar",
+                                style: TextStyle(
+                                  color: lightColor,
+                                ),
+                              ),
+                            )
+                          : const SizedBox.shrink(),
+                      SizedBox(
+                        height: 10.h,
+                      ),
                       isRefundable(
                         isPaid: controller.order.isPaid ?? false,
                         isPaymentAccepted:

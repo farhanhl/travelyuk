@@ -1,7 +1,9 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:travelyuk/app/core/api/api.dart';
 import 'package:travelyuk/app/models/get_orders_model.dart';
+import 'package:travelyuk/app/models/payment_proof_model.dart';
 import 'package:travelyuk/app/utils/app_const.dart';
 import 'package:travelyuk/app/models/error_model.dart';
 
@@ -31,6 +33,7 @@ class OrderDetailService {
 
   Future<Order> getOrder(int id) {
     return api.getOrder(id).then((value) {
+      log(jsonEncode(value.data));
       return Order.fromJson(value.data);
     }).catchError(
       (e) {
@@ -49,9 +52,9 @@ class OrderDetailService {
     );
   }
 
-  Future<dynamic> upload(file, id) {
+  Future<PaymentProof> upload(file, id) {
     return api.upload(file, id).then((value) {
-      return value.data;
+      return PaymentProof.fromJson(value.data);
     }).catchError(
       (e) {
         throw Exception(

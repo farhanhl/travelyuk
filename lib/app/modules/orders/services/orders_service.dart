@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'package:travelyuk/app/core/api/api.dart';
 import 'package:travelyuk/app/models/get_orders_model.dart';
 import 'package:travelyuk/app/utils/app_const.dart';
@@ -22,6 +23,8 @@ class OrdersService {
             return false;
           }
         }
+
+        log(jsonEncode(e));
 
         throw isJSON() ? errorHandler.message! : DEFAULT_ERROR_MESSAGE;
       },
