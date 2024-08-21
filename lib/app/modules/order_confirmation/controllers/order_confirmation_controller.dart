@@ -1,6 +1,3 @@
-import 'dart:convert';
-import 'dart:developer';
-
 import 'package:flutter/widgets.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
@@ -72,7 +69,6 @@ class OrderConfirmationController extends GetxController {
       price: price,
       isOneWay: isOneWay,
     );
-    log(jsonEncode(submitOrder));
     await service.addOrder(submitOrder).then(
       (value) {
         EasyLoading.dismiss();

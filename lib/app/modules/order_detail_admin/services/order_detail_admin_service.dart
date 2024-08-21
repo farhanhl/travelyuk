@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 import 'package:travelyuk/app/core/api/api.dart';
 import 'package:travelyuk/app/models/get_orders_model.dart';
 import 'package:travelyuk/app/utils/app_const.dart';
@@ -31,9 +30,6 @@ class OrderDetailAdminService {
 
   Future<Order> getOrder(int id) {
     return api.getOrder(id).then((value) {
-      log("======================================");
-      log(jsonEncode(value.data));
-      log("======================================");
       return Order.fromJson(value.data);
     }).catchError(
       (e) {
