@@ -152,7 +152,9 @@ class Menu {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10.r),
       ),
-      color: primaryColor,
+      color: isDatePassed(order?.schedule?.date, order?.schedule?.departureTime)
+          ? shadowColor
+          : primaryColor,
       child: ListTile(
         onTap: () => isAdmin
             ? Get.toNamed(Routes.ORDER_DETAIL_ADMIN, arguments: order)
@@ -278,6 +280,28 @@ class Menu {
                   width: 3.w,
                 ),
                 const Icon(
+                  FontAwesomeIcons.timeline,
+                  size: 16,
+                  color: lightColor,
+                ),
+                SizedBox(
+                  width: 12.w,
+                ),
+                Text(
+                  order?.schedule?.departureTime ?? "",
+                  style: TextStyle(
+                    fontSize: 14.sp,
+                    color: lightColor,
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                SizedBox(
+                  width: 3.w,
+                ),
+                const Icon(
                   FontAwesomeIcons.userLarge,
                   size: 16,
                   color: lightColor,
@@ -376,6 +400,16 @@ class Menu {
         ),
       ),
     );
+  }
+}
+
+bool isDatePassed(String? date, String? departureTime) {
+  DateTime departureDateTime = DateTime.parse("$date $departureTime");
+  DateTime now = DateTime.now();
+  if (departureDateTime.isBefore(now)) {
+    return true;
+  } else {
+    return false;
   }
 }
 
